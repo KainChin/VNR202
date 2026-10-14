@@ -61,58 +61,66 @@ function Loading() {
   );
 }
 
+import ScrollToTopButton from './components/ScrollToTopButton.jsx';
+
 // Component Routes bên trong để dùng được useLocation
 function AnimatedRoutes() {
   const location = useLocation();
+  const isMilestone = location.pathname.startsWith('/cot-moc');
 
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={location.pathname}
-        variants={pageVariants}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        transition={pageTransition}
-        style={{ minHeight: '100vh', perspective: '1200px' }}
-      >
-        <Suspense fallback={<Loading />}>
-          <Routes location={location}>
-            {/* Trang chủ poster + nút Gem */}
-            <Route path="/" element={<HomeWithGem />} />
+    <>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={location.pathname}
+          variants={pageVariants}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          transition={pageTransition}
+          style={{ minHeight: '100vh', perspective: '1200px' }}
+        >
+          <Suspense fallback={<Loading />}>
+            <Routes location={location}>
+              {/* Trang chủ poster + nút Gem */}
+              <Route path="/" element={<HomeWithGem />} />
 
-            {/* 6 trang cột mốc */}
-            <Route path="/cot-moc/1" element={<Milestone1 />} />
-            <Route path="/cot-moc/2" element={<Milestone2 />} />
-            <Route path="/cot-moc/3" element={<Milestone3 />} />
-            <Route path="/cot-moc/4" element={<Milestone4 />} />
-            <Route path="/cot-moc/5" element={<Milestone5 />} />
-            <Route path="/cot-moc/6" element={<Milestone6 />} />
+              {/* 6 trang cột mốc */}
+              <Route path="/cot-moc/1" element={<Milestone1 />} />
+              <Route path="/cot-moc/2" element={<Milestone2 />} />
+              <Route path="/cot-moc/3" element={<Milestone3 />} />
+              <Route path="/cot-moc/4" element={<Milestone4 />} />
+              <Route path="/cot-moc/5" element={<Milestone5 />} />
+              <Route path="/cot-moc/6" element={<Milestone6 />} />
 
-            {/* 404 – trang không tồn tại */}
-            <Route
-              path="*"
-              element={
-                <div style={{
-                  minHeight: '100vh',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '1rem',
-                  fontFamily: 'var(--font-tieude)',
-                  color: 'var(--do-dam)',
-                }}>
-                  <h1 style={{ fontSize: '3rem' }}>404</h1>
-                  <p>Trang này không tồn tại.</p>
-                  <a href="#/" className="nut-giay">← Về trang chủ</a>
-                </div>
-              }
-            />
-          </Routes>
-        </Suspense>
-      </motion.div>
-    </AnimatePresence>
+              {/* 404 – trang không tồn tại */}
+              <Route
+                path="*"
+                element={
+                  <div style={{
+                    minHeight: '100vh',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '1rem',
+                    fontFamily: 'var(--font-tieude)',
+                    color: 'var(--do-dam)',
+                  }}>
+                    <h1 style={{ fontSize: '3rem' }}>404</h1>
+                    <p>Trang này không tồn tại.</p>
+                    <a href="#/" className="nut-giay">← Về trang chủ</a>
+                  </div>
+                }
+              />
+            </Routes>
+          </Suspense>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Nút mũi tên lướt lên đầu trang cho tất cả các cột mốc */}
+      {isMilestone && <ScrollToTopButton />}
+    </>
   );
 }
 

@@ -57,7 +57,8 @@ function MilestoneNav({ currentId, showButtons = true }) {
                     ? { background: mauCham, borderColor: mauCham }
                     : { color: 'var(--chu-nhat)' }
                 }
-                aria-label={`Cột mốc ${m.id}: ${m.tieuDe}`}
+                title={`Cột mốc ${m.id}: ${m.tieuDe} ${m.id > 2 ? '(Sắp có)' : ''}`}
+                aria-label={`Cột mốc ${m.id}: ${m.tieuDe} ${m.id > 2 ? '(Sắp có)' : ''}`}
                 aria-current={isActive ? 'step' : undefined}
               >
                 {m.id}
@@ -93,6 +94,18 @@ function MilestoneNav({ currentId, showButtons = true }) {
           >
             🗺 Về poster
           </Link>
+
+          {/* Nút Lướt lên đầu trang */}
+          <button
+            type="button"
+            className="nut-giay"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            aria-label="Lướt lại lên đầu trang"
+            title="Lướt lại lên đầu trang (↑)"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+          >
+            ↑ Lên đầu trang
+          </button>
 
           {/* Nút Sau – ẩn nếu là cột mốc cuối */}
           {id < 6 ? (

@@ -1,0 +1,456 @@
+/* ============================================================
+   milestone2-editorial.css
+   Style đặc trưng cho Cột mốc 02: 05/1941 Hoàn chỉnh chuyển hướng
+   Kế thừa toàn bộ hệ màu và typography của museum editorial
+   Tối ưu: Bố cục tinh giản, cô đọng, giới hạn đúng 4–5 ảnh, không video
+   ============================================================ */
+
+/* 1. HERO SINGLE ARTWORK FRAME (ẢNH 1 LỚN DUY NHẤT) */
+.m2-hero-single-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #1d1611;
+  border: 1.5px solid var(--m1-border);
+  box-shadow: 0 8px 24px rgba(53, 39, 29, 0.18);
+}
+
+.m2-hero-single-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(12%) contrast(105%) brightness(98%);
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.hero-artwork-frame:hover .m2-hero-single-img {
+  transform: scale(1.03);
+  filter: sepia(4%) contrast(112%) brightness(101%);
+}
+
+.m2-hero-single-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(53, 39, 29, 0.88);
+  backdrop-filter: blur(4px);
+  color: #FAF4E6;
+  font-family: var(--m1-font-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  border: 1px solid rgba(185, 139, 74, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* 2. BỐI CẢNH LỊCH SỬ TINH GIẢN (2 CỘT GỌN GÀNG, KHÔNG DÙNG ẢNH) */
+.m2-context-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.m2-ctx-clean-card {
+  background: var(--m1-bg-card);
+  border: 1.5px solid var(--m1-border);
+  border-left: 4px solid var(--m1-gold);
+  border-radius: var(--m1-radius);
+  padding: 2rem 1.85rem;
+  box-shadow: var(--m1-shadow-sm);
+  transition: all 0.25s ease;
+}
+
+.m2-ctx-clean-card:hover {
+  transform: translateY(-3px);
+  border-left-color: var(--m1-red);
+  box-shadow: var(--m1-shadow-md);
+}
+
+.m2-ctx-badge-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.m2-ctx-num {
+  font-family: var(--m1-font-serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--m1-red);
+  line-height: 1;
+}
+
+.m2-ctx-date {
+  font-family: var(--m1-font-serif);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m1-gold);
+}
+
+.m2-ctx-card-title {
+  font-family: var(--m1-font-serif);
+  font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+  font-weight: 800;
+  color: var(--m1-red);
+  margin: 0 0 0.85rem;
+  line-height: 1.35;
+}
+
+.m2-ctx-card-desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--m1-text);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .m2-context-compact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* 2.5. HỘI NGHỊ TRUNG ƯƠNG 8 (2 ẢNH TƯ LIỆU SONG SONG + BẢNG THÔNG TIN, KHÔNG VIDEO) */
+.m2-conf-wrapper {
+  margin-top: 2.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.m2-conf-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.m2-conf-photo-card {
+  background: var(--m1-bg-card);
+  border: 1.5px solid var(--m1-border);
+  border-radius: var(--m1-radius);
+  padding: 1rem;
+  box-shadow: var(--m1-shadow-sm);
+  transition: all 0.25s ease;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.m2-conf-photo-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--m1-red);
+  box-shadow: var(--m1-shadow-md);
+}
+
+.m2-conf-photo-inner {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #1d1611;
+  position: relative;
+}
+
+.m2-conf-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(10%) contrast(105%) brightness(98%);
+  transition: transform 0.35s ease;
+}
+
+.m2-conf-photo-card:hover .m2-conf-photo-inner img {
+  transform: scale(1.03);
+}
+
+.m2-conf-photo-caption {
+  margin-top: 0.85rem;
+  padding: 0 0.25rem;
+}
+
+.m2-conf-photo-title {
+  font-family: var(--m1-font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--m1-red);
+  display: block;
+  line-height: 1.35;
+  margin-bottom: 0.25rem;
+}
+
+.m2-conf-photo-note {
+  font-size: 0.85rem;
+  color: var(--m1-text-muted);
+  font-style: italic;
+  display: block;
+  line-height: 1.45;
+}
+
+.m2-conf-details-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.m2-conf-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.m2-conf-fact-item {
+  background: var(--m1-bg-card);
+  border: 1px solid var(--m1-border);
+  border-top: 3.5px solid var(--m1-gold);
+  border-radius: 4px;
+  padding: 1.15rem 1.25rem;
+  box-shadow: var(--m1-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.m2-conf-fact-lbl {
+  font-family: var(--m1-font-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m1-gold);
+}
+
+.m2-conf-fact-val {
+  font-family: var(--m1-font-sans);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--m1-text);
+  line-height: 1.4;
+}
+
+.m2-conf-quote-callout {
+  background: var(--m1-bg-cream);
+  border-left: 4.5px solid var(--m1-red);
+  border-radius: 0 var(--m1-radius) var(--m1-radius) 0;
+  padding: 1.25rem 1.75rem;
+  box-shadow: var(--m1-shadow-sm);
+  margin: 0;
+}
+
+.m2-conf-quote-p {
+  font-family: var(--m1-font-serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--m1-red);
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .m2-conf-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .m2-conf-facts-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+}
+
+/* 3. BA QUYẾT SÁCH CHIẾN LƯỢC */
+.m2-decisions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.75rem;
+}
+
+.m2-decision-card {
+  background: var(--m1-bg-card);
+  border: 1.5px solid var(--m1-border);
+  border-top: 5px solid var(--m1-red);
+  border-radius: var(--m1-radius);
+  padding: 2.25rem 1.85rem;
+  box-shadow: var(--m1-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.m2-decision-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--m1-red);
+  box-shadow: var(--m1-shadow-lg);
+}
+
+.m2-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+  gap: 1rem;
+}
+
+.m2-card-num {
+  font-family: var(--m1-font-serif);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--m1-red);
+  line-height: 1;
+}
+
+.m2-card-role {
+  font-family: var(--m1-font-serif);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--m1-gold);
+  text-align: right;
+}
+
+.m2-card-title {
+  font-family: var(--m1-font-serif);
+  font-size: clamp(1.15rem, 1.5vw, 1.38rem);
+  font-weight: 800;
+  color: var(--m1-red);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  margin: 0 0 1.25rem;
+}
+
+.m2-card-quote {
+  background: var(--m1-bg-cream);
+  border-left: 3.5px solid var(--m1-red);
+  padding: 0.85rem 1.15rem;
+  border-radius: 0 4px 4px 0;
+  margin: 0 0 1.5rem;
+}
+
+.m2-card-quote p {
+  font-family: var(--m1-font-serif);
+  font-size: 0.96rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--m1-text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Ảnh tư liệu trong card (Cards 2 & 3) */
+.m2-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #1d1611;
+  border: 1px solid var(--m1-border);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.m2-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(16%) contrast(106%);
+  transition: transform 0.35s ease;
+}
+
+.m2-decision-card:hover .m2-card-img-wrap img {
+  transform: scale(1.04);
+}
+
+.m2-card-img-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(29, 22, 17, 0.95), transparent);
+  color: #FAF4E6;
+  font-size: 0.72rem;
+  padding: 0.8rem 0.5rem 0.35rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Khối Tuyên ngôn nổi bật thay thế ảnh ở Card 1 (để tiết kiệm số ảnh) */
+.m2-card-manifesto-highlight {
+  background: linear-gradient(135deg, rgba(143, 36, 24, 0.08) 0%, rgba(185, 139, 74, 0.12) 100%);
+  border: 1.5px dashed var(--m1-red);
+  border-radius: 4px;
+  padding: 1.25rem 1.15rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.m2-manifesto-icon {
+  color: var(--m1-gold);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.m2-manifesto-text {
+  font-family: var(--m1-font-serif);
+  font-size: 0.92rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--m1-red);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.m2-card-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.m2-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--m1-text);
+}
+
+.m2-point-bullet {
+  color: var(--m1-red);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+.m2-point-text {
+  flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .m2-decisions-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

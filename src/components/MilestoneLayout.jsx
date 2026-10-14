@@ -176,6 +176,86 @@ function MilestoneLayout({ data }) {
 
       {/* ===== NỘI DUNG CHÍNH (THEO THỨ TỰ BỐ CỤC YÊU CẦU) ===== */}
       <main className="milestone-container">
+        {/* TRẠNG THÁI SẮP CÓ CHO CỘT MỐC CHƯA CÓ NỘI DUNG */}
+        {(!boiCanh?.noiDung?.length && !quyetDinh?.noiDung?.length && !bonQuyetDinh?.danhSach?.length) && (
+          <div
+            className="milestone-coming-soon"
+            style={{
+              background: 'var(--giay-nhat)',
+              border: `2px dashed ${mauHex}`,
+              borderRadius: '12px',
+              padding: '3rem 2rem',
+              textAlign: 'center',
+              maxWidth: '760px',
+              margin: '2rem auto 4rem',
+              boxShadow: '0 4px 16px var(--bong)',
+            }}
+            tabIndex={0}
+            role="region"
+            aria-label={`Trạng thái Cột mốc ${id}: Sắp có`}
+          >
+            <span
+              style={{
+                display: 'inline-block',
+                background: mauHex,
+                color: '#fff',
+                fontFamily: 'var(--font-tieude)',
+                fontSize: '0.85rem',
+                fontWeight: 700,
+                letterSpacing: '0.1em',
+                padding: '0.35rem 1rem',
+                borderRadius: '999px',
+                marginBottom: '1.25rem',
+              }}
+            >
+              SẮP CÓ • ĐANG HOÀN THIỆN TƯ LIỆU
+            </span>
+            <h2
+              style={{
+                fontFamily: 'var(--font-tieude)',
+                fontSize: '2rem',
+                color: 'var(--do-dam)',
+                marginBottom: '1rem',
+              }}
+            >
+              Cột mốc {id}: {tieuDe || 'Chiến lược 1945'}
+            </h2>
+            <p
+              style={{
+                fontSize: '1.05rem',
+                lineHeight: 1.7,
+                color: 'var(--chu)',
+                maxWidth: '580px',
+                margin: '0 auto 2rem',
+              }}
+            >
+              Tư liệu lịch sử cho cột mốc này đang được biên soạn chi tiết theo chuẩn bảo tàng cao cấp. Vui lòng quay lại Cột mốc 01 để theo dõi trọn vẹn quyết sách bản lề tháng 11/1939.
+            </p>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '1rem',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Link
+                to="/cot-moc/1"
+                className="nut-giay"
+                style={{
+                  fontWeight: 700,
+                  borderColor: 'var(--do-dam)',
+                  color: 'var(--do-dam)',
+                }}
+              >
+                ← Xem Cột mốc 01 (11/1939)
+              </Link>
+              <Link to="/" className="nut-giay">
+                🗺 Về poster bản đồ
+              </Link>
+            </div>
+          </div>
+        )}
 
         {/* 2. BỐI CẢNH LỊCH SỬ */}
         {boiCanh && boiCanh.noiDung && boiCanh.noiDung.length > 0 && (

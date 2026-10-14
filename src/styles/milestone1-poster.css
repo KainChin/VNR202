@@ -1,0 +1,1347 @@
+/* ============================================================
+   milestone1-poster.css
+   Giao diện Poster / Strategy Map cho Cột mốc 1: Tháng 11/1939
+   Chủ đề: CHUYỂN HƯỚNG CHIẾN LƯỢC
+   Phong cách: Historical Editorial + Strategy Map
+   ============================================================ */
+
+:root {
+  --poster-bg: #F5ECD8;
+  --poster-bg-sec: #EFE0BD;
+  --poster-bg-card: #FAF4E5;
+  --poster-highlight: #FFF7E7;
+  --poster-red: #8B2E1E;
+  --poster-red-dark: #6C2013;
+  --poster-red-tint: rgba(139, 46, 30, 0.08);
+  --poster-text: #2B2118;
+  --poster-muted: #6B5344;
+  --poster-border: #B8895A;
+  --poster-border-light: rgba(184, 137, 90, 0.38);
+  --poster-gold: #C5A059;
+  --poster-gold-light: rgba(197, 160, 89, 0.15);
+  --poster-shadow-sm: 0 2px 8px rgba(43, 33, 24, 0.06);
+  --poster-shadow-md: 0 6px 20px rgba(43, 33, 24, 0.08);
+  --poster-shadow-lg: 0 14px 36px rgba(43, 33, 24, 0.12);
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+/* ---------- TOÀN TRANG POSTER ---------- */
+.poster-page {
+  background-color: var(--poster-bg);
+  color: var(--poster-text);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.65;
+}
+
+/* Texture giấy cổ mờ phủ nhẹ */
+.poster-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 50% 30%, rgba(255, 247, 231, 0.4) 0%, transparent 70%);
+  z-index: 1;
+}
+
+.poster-shell {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 2rem 5rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   STICKY TOP NAVIGATION
+   ============================================================ */
+.poster-top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(245, 236, 216, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1.5px solid var(--poster-border-light);
+  box-shadow: 0 2px 12px rgba(43, 33, 24, 0.06);
+  padding: 0.6rem 2rem;
+  transition: all 0.25s ease;
+}
+
+.poster-top-bar__inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.poster-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  background: var(--poster-bg-card);
+  border: 1px solid var(--poster-border);
+  border-radius: var(--radius-sm);
+  color: var(--poster-text);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--poster-shadow-sm);
+}
+
+.poster-nav-btn:hover {
+  background: var(--poster-red);
+  color: #fff;
+  border-color: var(--poster-red);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.poster-top-center {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--poster-bg-sec);
+  border: 1px solid var(--poster-border);
+  padding: 0.35rem 1.15rem;
+  border-radius: 999px;
+  box-shadow: var(--poster-shadow-sm);
+}
+
+.poster-top-badge {
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--poster-red);
+  color: #fff;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+}
+
+.poster-top-sep {
+  color: var(--poster-gold);
+  font-size: 0.75rem;
+}
+
+.poster-top-title {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--poster-red);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.poster-top-tools {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Quick jump links giữa các section */
+.poster-section-jump {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--poster-bg-sec);
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid var(--poster-border-light);
+}
+
+.poster-jump-link {
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: var(--poster-muted);
+  text-decoration: none;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.poster-jump-link:hover,
+.poster-jump-link.active {
+  background: var(--poster-highlight);
+  color: var(--poster-red);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* ============================================================
+   CHUNG CHO CÁC SECTION
+   ============================================================ */
+.poster-section {
+  padding: 4.5rem 0 3.5rem;
+  position: relative;
+  border-bottom: 1px solid var(--poster-border-light);
+}
+
+.poster-section:last-of-type {
+  border-bottom: none;
+}
+
+.poster-section-header {
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.poster-section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--poster-red);
+  margin-bottom: 0.4rem;
+}
+
+.poster-section-eyebrow::before,
+.poster-section-eyebrow::after {
+  content: '✦';
+  font-size: 0.65rem;
+  color: var(--poster-gold);
+}
+
+.poster-section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  color: var(--poster-red);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.poster-section-sub {
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  color: var(--poster-muted);
+  margin-top: 0.45rem;
+  font-style: italic;
+  max-width: 650px;
+}
+
+.poster-divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.25rem 0;
+  opacity: 0.6;
+}
+
+.poster-divider-ornament::before,
+.poster-divider-ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--poster-border);
+}
+
+.poster-divider-ornament span {
+  color: var(--poster-gold);
+  font-size: 0.9rem;
+}
+
+/* ============================================================
+   1. HERO SECTION
+   ============================================================ */
+.poster-hero {
+  padding: 3rem 0 4rem;
+}
+
+/* Mini timeline dải phía trên Hero: 1939 → 1940 → 1941 → 1945 */
+.hero-mini-timeline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--poster-bg-sec);
+  border: 1px solid var(--poster-border-light);
+  padding: 0.4rem 1.25rem;
+  border-radius: 999px;
+  margin-bottom: 2rem;
+  box-shadow: var(--poster-shadow-sm);
+}
+
+.hero-mini-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-mini-year {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--poster-muted);
+}
+
+.hero-mini-step.active .hero-mini-year {
+  color: var(--poster-red);
+  font-weight: 800;
+  position: relative;
+}
+
+.hero-mini-step.active .hero-mini-year::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--poster-red);
+}
+
+.hero-mini-arrow {
+  color: var(--poster-gold);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.poster-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.poster-hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.poster-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  align-self: flex-start;
+  background: var(--poster-red);
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.3rem 0.9rem;
+  border-radius: var(--radius-sm);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(139, 46, 30, 0.25);
+}
+
+.poster-hero-year {
+  font-family: var(--font-serif);
+  font-size: clamp(3.2rem, 6.5vw, 5.2rem);
+  font-weight: 700;
+  color: var(--poster-red);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.poster-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+  font-weight: 800;
+  color: var(--poster-text);
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 1.5rem;
+}
+
+.poster-hero-sub {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  font-style: italic;
+  color: var(--poster-red);
+  line-height: 1.5;
+  border-left: 4px solid var(--poster-red);
+  padding-left: 1.25rem;
+  background: var(--poster-highlight);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  box-shadow: var(--poster-shadow-sm);
+}
+
+/* Cụm visual collage 3 ảnh lịch sử */
+.hero-collage-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.hero-collage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.hero-collage-base {
+  position: absolute;
+  inset: 0;
+  border: 1px dashed var(--poster-border);
+  border-radius: var(--radius-lg);
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(184, 137, 90, 0.08), transparent 70%);
+}
+
+.hero-photo-item {
+  position: absolute;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 3.5px solid #FAF4E5;
+  box-shadow: var(--poster-shadow-md);
+  transition: all 0.35s ease;
+  cursor: pointer;
+  background: #1e1711;
+}
+
+.hero-photo-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(22%) contrast(108%) brightness(96%);
+  transition: transform 0.45s ease, filter 0.35s ease;
+}
+
+.hero-photo-item:hover {
+  transform: scale(1.04) translateY(-4px) !important;
+  box-shadow: var(--poster-shadow-lg);
+  z-index: 10;
+  border-color: #FFF7E7;
+}
+
+.hero-photo-item:hover img {
+  filter: sepia(5%) contrast(115%) brightness(102%);
+  transform: scale(1.06);
+}
+
+/* 3 vị trí ảnh trong collage composition */
+.hero-photo-item.p1 {
+  /* Chiến tranh thế giới thứ hai */
+  top: 0;
+  left: 0;
+  width: 62%;
+  height: 64%;
+  z-index: 2;
+  transform: rotate(-2.5deg);
+}
+
+.hero-photo-item.p2 {
+  /* Đông Dương thời Pháp thuộc */
+  bottom: 0;
+  left: 12%;
+  width: 58%;
+  height: 52%;
+  z-index: 3;
+  transform: rotate(2deg);
+}
+
+.hero-photo-item.p3 {
+  /* Hội nghị Trung ương 6 */
+  top: 18%;
+  right: 0;
+  width: 50%;
+  height: 66%;
+  z-index: 4;
+  transform: rotate(-1deg);
+}
+
+.hero-photo-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(20, 15, 11, 0.92) 0%, rgba(20, 15, 11, 0.4) 65%, transparent 100%);
+  color: #FAF4E5;
+  padding: 1.25rem 0.65rem 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 1.25;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+
+/* Dấu triện vintage trên collage */
+.hero-stamp {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 76px;
+  height: 76px;
+  border: 2px dashed var(--poster-red);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(245, 236, 216, 0.9);
+  color: var(--poster-red);
+  font-family: var(--font-serif);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transform: rotate(14deg);
+  z-index: 6;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(139, 46, 30, 0.15);
+}
+
+/* ============================================================
+   2. SECTION “BỐI CẢNH LỊCH SỬ”
+   ============================================================ */
+.context-timeline-container {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+/* Đường mảnh nối ngang màu đỏ nâu */
+.context-track-line {
+  position: absolute;
+  top: 36px;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--poster-border), var(--poster-red), var(--poster-border));
+  z-index: 1;
+}
+
+.context-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.context-card {
+  background: var(--poster-bg-card);
+  border: 1px solid var(--poster-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem 1.5rem;
+  box-shadow: var(--poster-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.context-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--poster-shadow-md);
+  border-color: var(--poster-red);
+}
+
+.context-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+/* Số thứ tự lớn: 01, 02, 03 */
+.context-card-num {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--poster-red);
+  background: var(--poster-highlight);
+  border: 1.5px solid var(--poster-border);
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--poster-shadow-sm);
+  flex-shrink: 0;
+}
+
+.context-card-date {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--poster-red);
+  letter-spacing: 0.02em;
+  text-align: right;
+  border-bottom: 1.5px solid var(--poster-gold);
+  padding-bottom: 0.2rem;
+}
+
+/* Ảnh nhỏ trong mốc bối cảnh */
+.context-card-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #1e1711;
+  border: 1px solid var(--poster-border);
+  margin-bottom: 1.15rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.context-card-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(18%) contrast(106%);
+  transition: transform 0.4s ease;
+}
+
+.context-card:hover .context-card-thumb-wrap img {
+  transform: scale(1.05);
+}
+
+.context-card-desc {
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--poster-text);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ============================================================
+   3. SECTION “HỘI NGHỊ TRUNG ƯƠNG 6” (SPLIT 40 / 60)
+   ============================================================ */
+.conf-split-grid {
+  display: grid;
+  grid-template-columns: 4fr 6fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* Cột trái (40%): 2 ảnh tư liệu sạch sẽ, không khung card lộn xộn */
+.conf-left-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.conf-photo-frame {
+  background: var(--poster-bg-card);
+  border: 1px solid var(--poster-border);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  box-shadow: var(--poster-shadow-sm);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.conf-photo-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--poster-shadow-md);
+  border-color: var(--poster-red);
+}
+
+.conf-photo-inner {
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #1c150e;
+}
+
+.conf-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: sepia(15%) contrast(106%);
+  transition: transform 0.4s ease;
+}
+
+.conf-photo-frame:hover .conf-photo-inner img {
+  transform: scale(1.04);
+}
+
+.conf-photo-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  padding: 0 0.25rem;
+}
+
+.conf-photo-caption {
+  font-family: var(--font-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--poster-red);
+}
+
+.conf-photo-role {
+  font-size: 0.78rem;
+  color: var(--poster-muted);
+  font-style: italic;
+}
+
+/* Cột phải (60%): Thông tin + Quote box + Nút xem tư liệu */
+.conf-right-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.conf-info-table {
+  background: var(--poster-bg-card);
+  border: 1px solid var(--poster-border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.75rem;
+  box-shadow: var(--poster-shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.conf-info-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: 0.98rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px dashed var(--poster-border-light);
+}
+
+.conf-info-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.conf-info-lbl {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--poster-red);
+  letter-spacing: 0.03em;
+}
+
+.conf-info-val {
+  color: var(--poster-text);
+  font-weight: 500;
+}
+
+/* Quote box lớn nền nhạt, viền trái đỏ nâu */
+.conf-quote-box {
+  background: var(--poster-highlight);
+  border-left: 5px solid var(--poster-red);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 1.5rem 1.85rem;
+  box-shadow: var(--poster-shadow-sm);
+  position: relative;
+}
+
+.conf-quote-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  font-style: italic;
+  line-height: 1.65;
+  color: var(--poster-text);
+  margin: 0;
+}
+
+.conf-quote-mark {
+  position: absolute;
+  top: 6px;
+  right: 18px;
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  color: var(--poster-gold);
+  opacity: 0.25;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Nút "Xem tư liệu" */
+.conf-action-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.btn-open-video {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--poster-red);
+  color: #fff;
+  border: 1px solid var(--poster-red);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1.65rem;
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(139, 46, 30, 0.25);
+}
+
+.btn-open-video:hover {
+  background: var(--poster-red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(139, 46, 30, 0.35);
+}
+
+.btn-open-video-icon {
+  font-size: 1.1rem;
+}
+
+.btn-open-video-hint {
+  font-size: 0.82rem;
+  color: var(--poster-muted);
+  font-style: italic;
+}
+
+/* ============================================================
+   4. SECTION QUAN TRỌNG NHẤT: “4 QUYẾT ĐỊNH CHIẾN LƯỢC”
+   VISUAL CENTER CỦA CẢ TRANG
+   ============================================================ */
+.strategy-center-section {
+  padding: 5rem 0;
+  background: radial-gradient(circle at 50% 40%, rgba(255, 247, 231, 0.6) 0%, transparent 80%);
+}
+
+.strategy-grid-2x2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.strategy-card {
+  background: var(--poster-bg-card);
+  border: 1.5px solid var(--poster-border);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 2.25rem;
+  box-shadow: var(--poster-shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 240px;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  overflow: hidden;
+}
+
+.strategy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--poster-shadow-lg);
+  border-color: var(--poster-red);
+}
+
+/* CARD 01 NỔI BẬT HƠN NHẸ BẰNG ACCENT ĐỎ */
+.strategy-card--highlight {
+  background: linear-gradient(145deg, #FFF9ED 0%, #FAF1DE 100%);
+  border: 2px solid var(--poster-red);
+  box-shadow: 0 8px 28px rgba(139, 46, 30, 0.12);
+}
+
+.strategy-card--highlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--poster-red);
+}
+
+.strategy-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+/* Số thứ tự lớn: 01, 02, 03, 04 */
+.strategy-card-num {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--poster-red);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.strategy-card--highlight .strategy-card-num {
+  color: var(--poster-red);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.strategy-card-badge {
+  font-family: var(--font-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--poster-red);
+  color: #fff;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(139, 46, 30, 0.2);
+}
+
+.strategy-card-icon-wrap {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--poster-highlight);
+  border: 1px solid var(--poster-border-light);
+  border-radius: 50%;
+  box-shadow: var(--poster-shadow-sm);
+}
+
+.strategy-card-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 700;
+  color: var(--poster-red);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  margin: 0 0 0.85rem;
+}
+
+.strategy-card-body {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--poster-text);
+  margin: 0;
+  flex: 1;
+}
+
+/* ============================================================
+   5. SECTION “Ý NGHĨA VÀ TIẾN TRÌNH”
+   KẾT LUẬN MẠNH MẼ
+   ============================================================ */
+.significance-section {
+  padding: 4.5rem 0 3.5rem;
+  text-align: center;
+}
+
+.significance-core-box {
+  background: var(--poster-bg-card);
+  border: 1.5px solid var(--poster-border);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.5rem;
+  box-shadow: var(--poster-shadow-md);
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.significance-lead-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  color: var(--poster-red);
+  line-height: 1.45;
+  max-width: 960px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Timeline ngang: 1939 Khởi đầu → 1940 Khẳng định → 1941 Hoàn chỉnh → 1945 Thắng lợi */
+.significance-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding: 1.5rem 1rem;
+  background: var(--poster-highlight);
+  border: 1px solid var(--poster-border-light);
+  border-radius: var(--radius-md);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.significance-step {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.significance-step-year {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--poster-red);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 6px rgba(139, 46, 30, 0.25);
+}
+
+.significance-step-desc {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--poster-text);
+  letter-spacing: 0.02em;
+}
+
+.significance-arrow {
+  color: var(--poster-gold);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Quote lớn ở cuối */
+.significance-final-quote {
+  max-width: 860px;
+  margin: 3.5rem auto 2.5rem;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.significance-quote-p {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2.3vw, 1.95rem);
+  font-style: italic;
+  font-weight: 700;
+  color: var(--poster-red);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.significance-quote-ornament {
+  font-size: 1.25rem;
+  color: var(--poster-gold);
+  margin-top: 1rem;
+}
+
+/* Nút CTA tiếp theo */
+.significance-cta-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btn-cta-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--poster-red);
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.9rem 2.25rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(139, 46, 30, 0.3);
+  transition: all 0.25s ease;
+}
+
+.btn-cta-next:hover {
+  background: var(--poster-red-dark);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 46, 30, 0.4);
+  text-decoration: none;
+}
+
+/* ============================================================
+   MODAL VIDEO YOUTUBE SHORTS
+   ============================================================ */
+.poster-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 15, 11, 0.82);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.poster-video-dialog {
+  background: var(--poster-bg);
+  border: 2px solid var(--poster-red);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem 1.5rem;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.poster-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1.5px solid var(--poster-border-light);
+  padding-bottom: 0.65rem;
+}
+
+.poster-modal-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--poster-red);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.poster-modal-close-btn {
+  background: var(--poster-bg-sec);
+  border: 1px solid var(--poster-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--poster-text);
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.poster-modal-close-btn:hover {
+  background: var(--poster-red);
+  color: #fff;
+  border-color: var(--poster-red);
+}
+
+.poster-shorts-frame {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 9 / 16;
+  max-height: 65vh;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.poster-shorts-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+.poster-video-modal-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.poster-video-direct-link {
+  font-size: 0.82rem;
+  color: var(--poster-red);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ============================================================
+   LIGHTBOX XEM ẢNH TƯ LIỆU PHÓNG TO
+   ============================================================ */
+.poster-img-lightbox-dialog {
+  background: var(--poster-bg);
+  border: 2px solid var(--poster-red);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem 1.25rem;
+  max-width: 90vw;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
+}
+
+.poster-img-lightbox-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 72vh;
+  max-width: 85vw;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: #140f0b;
+  border: 1px solid var(--poster-border);
+}
+
+.poster-img-lightbox-frame img {
+  max-height: 72vh;
+  max-width: 85vw;
+  object-fit: contain;
+  display: block;
+}
+
+.poster-img-lightbox-caption {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--poster-red);
+  text-align: center;
+  max-width: 720px;
+}
+
+/* Hover hint zoom ảnh */
+.img-zoom-hint-pill {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(20, 15, 11, 0.75);
+  backdrop-filter: blur(4px);
+  color: #FFF7E7;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.hero-photo-item:hover .img-zoom-hint-pill,
+.context-card-thumb-wrap:hover .img-zoom-hint-pill,
+.conf-photo-frame:hover .img-zoom-hint-pill {
+  opacity: 1;
+}
+
+/* ============================================================
+   RESPONSIVE (TABLET & MOBILE)
+   ============================================================ */
+
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .poster-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero-collage {
+    max-width: 480px;
+  }
+
+  .conf-split-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .conf-left-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .strategy-grid-2x2 {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Tablet nhỏ & Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .poster-shell {
+    padding: 0 1.25rem 4rem;
+  }
+
+  .poster-top-bar {
+    padding: 0.5rem 1rem;
+  }
+
+  .poster-top-center {
+    display: none;
+  }
+
+  .poster-section-jump {
+    display: none;
+  }
+
+  .poster-section {
+    padding: 3rem 0 2rem;
+  }
+
+  /* Chuyển timeline ngang thành vertical timeline */
+  .context-track-line {
+    top: 30px;
+    bottom: 30px;
+    left: 45px;
+    width: 2px;
+    height: auto;
+    right: auto;
+  }
+
+  .context-timeline-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .conf-left-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .conf-info-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  /* Strategy cards chuyển thành 1 cột trên mobile */
+  .strategy-grid-2x2 {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .strategy-card {
+    padding: 1.5rem;
+  }
+
+  .significance-core-box {
+    padding: 2rem 1.25rem;
+  }
+
+  .significance-timeline {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .significance-step {
+    justify-content: flex-start;
+  }
+
+  .significance-arrow {
+    display: none;
+  }
+
+  .hero-collage {
+    aspect-ratio: 16 / 12;
+  }
+}

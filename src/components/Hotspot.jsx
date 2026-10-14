@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
  * @param {string} duongDan - URL đích (/cot-moc/X)
  * @param {number} index    - Thứ tự hiện lần lượt (delay animation)
  */
-function Hotspot({ so, left, top, nhan, duongDan, index }) {
+function Hotspot({ so, left, top, nhan, duongDan, onClick, index }) {
   return (
     <motion.div
       // Hiện lần lượt: mỗi nút delay thêm 0.15s
@@ -32,28 +32,55 @@ function Hotspot({ so, left, top, nhan, duongDan, index }) {
         zIndex: 10,
       }}
     >
-      <Link
-        to={duongDan}
-        className="hotspot"
-        aria-label={`Cột mốc ${so}: ${nhan}`}
-        title={nhan}
-        style={{
-          // Đặt tâm nút đúng tọa độ
-          position: 'relative',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          // Kích thước: ~5% chiều rộng khung, tối thiểu 44px (a11y)
-          width: 'clamp(44px, 5%, 60px)',
-          height: 'clamp(44px, 5%, 60px)',
-          borderRadius: '50%',
-          background: 'transparent',
-          transform: 'translate(-50%, -50%)',
-        }}
-      >
-        {/* Nhãn tooltip khi hover */}
-        <span className="hotspot__label">{nhan}</span>
-      </Link>
+      {onClick ? (
+        <button
+          type="button"
+          onClick={onClick}
+          className="hotspot"
+          aria-label={`Cột mốc ${so}: ${nhan}`}
+          title={nhan}
+          style={{
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 'clamp(44px, 5%, 60px)',
+            height: 'clamp(44px, 5%, 60px)',
+            borderRadius: '50%',
+            background: 'transparent',
+            border: 'none',
+            cursor: 'pointer',
+            padding: 0,
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          {/* Nhãn tooltip khi hover */}
+          <span className="hotspot__label">{nhan}</span>
+        </button>
+      ) : (
+        <Link
+          to={duongDan}
+          className="hotspot"
+          aria-label={`Cột mốc ${so}: ${nhan}`}
+          title={nhan}
+          style={{
+            // Đặt tâm nút đúng tọa độ
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            // Kích thước: ~5% chiều rộng khung, tối thiểu 44px (a11y)
+            width: 'clamp(44px, 5%, 60px)',
+            height: 'clamp(44px, 5%, 60px)',
+            borderRadius: '50%',
+            background: 'transparent',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          {/* Nhãn tooltip khi hover */}
+          <span className="hotspot__label">{nhan}</span>
+        </Link>
+      )}
     </motion.div>
   );
 }

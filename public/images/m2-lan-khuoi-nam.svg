@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a1f18" />
+      <stop offset="50%" stop-color="#1f1610" />
+      <stop offset="100%" stop-color="#150e09" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b98b4a" />
+      <stop offset="50%" stop-color="#e8cf96" />
+      <stop offset="100%" stop-color="#b98b4a" />
+    </linearGradient>
+    <filter id="grain">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.07 0" />
+      <feComposite in2="SourceGraphic" in="glitch" operator="in" />
+    </filter>
+  </defs>
+
+  <!-- Nền giấy vintage trầm bảo tàng -->
+  <rect width="800" height="500" fill="url(#bgGrad)" />
+
+  <!-- Viền đôi bảo tàng -->
+  <rect x="24" y="24" width="752" height="452" fill="none" stroke="#b98b4a" stroke-width="1.5" stroke-opacity="0.45" rx="4" />
+  <rect x="32" y="32" width="736" height="436" fill="none" stroke="#8f2418" stroke-width="1" stroke-opacity="0.3" rx="2" />
+
+  <!-- Họa tiết góc cổ điển -->
+  <path d="M 24 48 L 48 48 L 48 24" fill="none" stroke="#b98b4a" stroke-width="2.5" />
+  <path d="M 776 48 L 752 48 L 752 24" fill="none" stroke="#b98b4a" stroke-width="2.5" />
+  <path d="M 24 452 L 48 452 L 48 476" fill="none" stroke="#b98b4a" stroke-width="2.5" />
+  <path d="M 776 452 L 752 452 L 752 476" fill="none" stroke="#b98b4a" stroke-width="2.5" />
+
+  <!-- Tag phân loại -->
+  <rect x="280" y="55" width="240" height="28" rx="14" fill="#8f2418" fill-opacity="0.9" />
+  <text x="400" y="74" font-family="'Playfair Display', Georgia, serif" font-size="12" font-weight="700" fill="#fff9ee" text-anchor="middle" letter-spacing="2">
+    DI TÍCH LỊCH SỬ
+  </text>
+
+  <!-- Biểu tượng trung tâm -->
+  <circle cx="400" cy="180" r="54" fill="#2a1e16" stroke="url(#goldGrad)" stroke-width="2" />
+  <circle cx="400" cy="180" r="46" fill="#1f140e" stroke="#8f2418" stroke-width="1.5" />
+  <text x="400" y="196" font-size="38" text-anchor="middle">🛖</text>
+
+  <!-- Tiêu đề tư liệu -->
+  <text x="400" y="280" font-family="'Playfair Display', Georgia, serif" font-size="22" font-weight="800" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1">
+    LÁN KHUỔI NẶM, PÁC BÓ
+  </text>
+
+  <!-- Đường kẻ trang trí vàng đồng -->
+  <line x1="260" y1="305" x2="540" y2="305" stroke="url(#goldGrad)" stroke-width="1.5" stroke-opacity="0.6" />
+  <circle cx="400" cy="305" r="4" fill="#8f2418" stroke="#b98b4a" stroke-width="1.5" />
+
+  <!-- Mô tả phụ -->
+  <text x="400" y="340" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="14" font-style="italic" fill="#eeddbb" text-anchor="middle">
+    Địa điểm diễn ra Hội nghị Trung ương 8 (10–19/5/1941)
+  </text>
+
+  <!-- Huy hiệu chờ cập nhật ảnh -->
+  <rect x="250" y="400" width="300" height="32" rx="4" fill="#2a1e16" stroke="#b98b4a" stroke-width="1" stroke-dasharray="4 3" />
+  <text x="400" y="421" font-family="'Be Vietnam Pro', system-ui, sans-serif" font-size="12" font-weight="500" fill="#d4b483" text-anchor="middle">
+    📷 Vị trí ảnh tư liệu • Chờ thay ảnh từ bạn
+  </text>
+</svg>
