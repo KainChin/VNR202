@@ -196,6 +196,63 @@ body,
   gap: 0.85rem;
 }
 
+/* Thanh chuyển nhanh 7 cột mốc trên Header (Nav 1–7) chuẩn Ảnh 2 */
+.m4-header-nav-pills {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(235, 224, 208, 0.65);
+  padding: 3px 14px 3px 3px;
+  border-radius: 999px;
+  border: 1px solid rgba(185, 139, 74, 0.35);
+  box-shadow: inset 0 1px 2px rgba(53, 39, 29, 0.04);
+}
+
+.m4-nav-pill {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--m1-font-sans, system-ui, -apple-system, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #6C584C;
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.m4-nav-pill.is-active {
+  background: #8B1A10;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(139, 26, 16, 0.35);
+  cursor: default;
+}
+
+.m4-nav-pill:not(.is-active):not(.is-locked):hover {
+  background: rgba(139, 26, 16, 0.12);
+  color: #8B1A10;
+  transform: translateY(-1px);
+}
+
+.m4-nav-pill.is-locked {
+  color: #9C8C7E;
+  background: transparent;
+  cursor: not-allowed;
+  opacity: 0.6;
+  user-select: none;
+  font-weight: 500;
+}
+
+.m4-nav-pill.is-locked:hover {
+  background: transparent;
+  color: #9C8C7E;
+  transform: none;
+}
+
 .m1-kbd-hint {
   font-size: 0.76rem;
   color: var(--m1-text-muted);

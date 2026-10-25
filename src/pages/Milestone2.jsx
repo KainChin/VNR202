@@ -1,30 +1,31 @@
 // src/pages/Milestone2.jsx
-// Trang Cột mốc 02 – 05/1941: Hoàn chỉnh chuyển hướng chiến lược
+// Trang Cột mốc 02 – 11/1939: MỞ ĐẦU CHUYỂN HƯỚNG CHIẾN LƯỢC (Hội nghị TW 6, Bà Điểm)
 // Phong cách: Historical Editorial + Museum Website cao cấp
-// Chuẩn thiết kế: Tối giản, trang trọng, giàu tính học thuật, tương tác trình chiếu mượt mà
+// Chuẩn thiết kế: Tối giản, trang trọng, giàu tính học thuật, tương tác mượt mà
 
 import { useState, useEffect, useCallback } from 'react';
 import data from '../data/milestone2.js';
 
 import M2Header from '../components/milestone2/M2Header.jsx';
-import M2HeroSection from '../components/milestone2/M2HeroSection.jsx';
-import M2ContextSection from '../components/milestone2/M2ContextSection.jsx';
-import M2ConferenceSection from '../components/milestone2/M2ConferenceSection.jsx';
-import M2DecisionsSection from '../components/milestone2/M2DecisionsSection.jsx';
-import M2LogicFlowSection from '../components/milestone2/M2LogicFlowSection.jsx';
-import M2MeaningSection from '../components/milestone2/M2MeaningSection.jsx';
-import GemButton from '../components/GemButton.jsx';
+import HeroSection from '../components/milestone1/HeroSection.jsx';
+import ContextSection from '../components/milestone1/ContextSection.jsx';
+import ConferenceSection from '../components/milestone1/ConferenceSection.jsx';
+import LogicFlowSection from '../components/milestone1/LogicFlowSection.jsx';
+import StrategicShiftSection from '../components/milestone1/StrategicShiftSection.jsx';
+import MeaningSection from '../components/milestone1/MeaningSection.jsx';
+import VideoModal from '../components/milestone1/VideoModal.jsx';
+import ImageLightbox from '../components/milestone1/ImageLightbox.jsx';
+import AiAppendixModal from '../components/AiAppendixModal.jsx';
 
 import '../styles/milestone1-editorial.css';
-import '../styles/milestone2-editorial.css';
+import '../styles/milestone4-editorial.css';
 
-// Danh sách thứ tự các section phục vụ điều hướng bằng phím mũi tên khi trình chiếu
 const ORDERED_SECTIONS = [
   'hero',
   'boi-canh',
   'hoi-nghi',
-  'quyet-sach',
-  'logic-chien-luoc',
+  'logic-chuyen-huong',
+  'dieu-chinh',
   'y-nghia',
 ];
 
@@ -32,6 +33,9 @@ function Milestone2() {
   const [activeSection, setActiveSection] = useState('hero');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   // Cuộn mượt lên đầu trang khi mở
   useEffect(() => {
@@ -116,9 +120,10 @@ function Milestone2() {
     });
   }, []);
 
-  // 5. Chế độ trình chiếu: Bấm phím ← / → hoặc PageUp / PageDown để chuyển nhanh giữa các section
+  // 5. Điều hướng bằng phím mũi tên: Bấm ← / → hoặc PageUp / PageDown để chuyển nhanh giữa các section
   useEffect(() => {
     const handleKeyNav = (e) => {
+      if (isVideoModalOpen || isAiModalOpen || selectedPhoto) return;
       const tag = document.activeElement?.tagName?.toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
 
@@ -137,44 +142,59 @@ function Milestone2() {
 
     window.addEventListener('keydown', handleKeyNav);
     return () => window.removeEventListener('keydown', handleKeyNav);
-  }, [activeSection, scrollToSection]);
+  }, [activeSection, isVideoModalOpen, isAiModalOpen, selectedPhoto, scrollToSection]);
 
   return (
     <div className={`m1-editorial-page ${isFullScreen ? 'is-fullscreen' : ''}`}>
-      {/* HEADER CỐ ĐỊNH: Thanh tiến trình mỏng, nút toàn màn hình & điều hướng cột mốc */}
+      {/* HEADER CỐ ĐỊNH CHUẨN MUSEUM EDITORIAL */}
       <M2Header
         scrollProgress={scrollProgress}
         isFullScreen={isFullScreen}
         onToggleFullScreen={toggleFullScreen}
+        onOpenAiModal={() => setIsAiModalOpen(true)}
         data={data}
       />
 
       {/* NỘI DUNG CHÍNH (EDITORIAL SHELL) */}
       <main className="m1-editorial-shell">
-        {/* 1. HERO SECTION: LÃNH TỤ VỀ NƯỚC & HOÀN CHỈNH ĐƯỜNG LỐI */}
-        <M2HeroSection heroData={data.hero} />
-
-        {/* 2. BỐI CẢNH LỊCH SỬ (TIMELINE NGANG 3 MỐC ĐẦU NĂM 1941) */}
-        <M2ContextSection boiCanhData={data.boiCanh} />
-
-        {/* 3. HỘI NGHỊ TRUNG ƯƠNG 8 (PÁC BÓ, CAO BẰNG) */}
-        <M2ConferenceSection confData={data.hoiNghiTW8} />
-
-        {/* 4. 3 QUYẾT SÁCH CHIẾN LƯỢC CỦA HỘI NGHỊ TW8 */}
-        <M2DecisionsSection decisionsData={data.noiDungChinh} />
-
-        {/* 5. FLOW "LOGIC CHIẾN LƯỢC 1939 – 1945" (6 BƯỚC KHÔNG DÙNG CARD) */}
-        <M2LogicFlowSection logicData={data.logicChienLuoc} />
-
-        {/* 6. Ý NGHĨA LỊCH SỬ, CÂU KẾT LỚN & NGUỒN TƯ LIỆU */}
-        <M2MeaningSection
+        <HeroSection heroData={data.hero} onOpenPhoto={setSelectedPhoto} />
+        <ContextSection
+          boiCanhData={data.boiCanh}
+          onOpenPhoto={setSelectedPhoto}
+        />
+        <ConferenceSection
+          confData={data.hoiNghiTW6}
+          onOpenVideo={() => setIsVideoModalOpen(true)}
+          onOpenPhoto={setSelectedPhoto}
+        />
+        <LogicFlowSection logicData={data.logicChuyenHuong} />
+        <StrategicShiftSection shiftData={data.dieuChinhChienLuoc} />
+        <MeaningSection
           meaningData={data.yNghiaTienTrinh}
           refData={data.nguonTuLieu}
         />
       </main>
 
-      {/* Nút trợ lý Gem AI */}
-      <GemButton milestoneId={data.id} />
+      {/* LIGHTBOX XEM ẢNH TƯ LIỆU PHÓNG TO CHÍNH GIỮA MÀN HÌNH VỚI NÚT ĐÓNG */}
+      <ImageLightbox
+        photo={selectedPhoto}
+        onClose={() => setSelectedPhoto(null)}
+      />
+
+      {/* MODAL VIDEO TƯ LIỆU */}
+      {data.hoiNghiTW6?.videoShorts && (
+        <VideoModal
+          isOpen={isVideoModalOpen}
+          onClose={() => setIsVideoModalOpen(false)}
+          videoData={data.hoiNghiTW6.videoShorts}
+        />
+      )}
+
+      {/* MODAL PHỤ LỤC SỬ DỤNG AI */}
+      <AiAppendixModal
+        isOpen={isAiModalOpen}
+        onClose={() => setIsAiModalOpen(false)}
+      />
     </div>
   );
 }

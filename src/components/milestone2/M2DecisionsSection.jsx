@@ -4,7 +4,9 @@
 
 import { memo } from 'react';
 
-function M2DecisionsSection({ decisionsData }) {
+function M2DecisionsSection({ decisionsData, onOpenPhoto }) {
+  if (!decisionsData) return null;
+
   return (
     <section id="quyet-sach" className="m1-section" aria-labelledby="heading-quyet-sach">
       <div>
@@ -16,7 +18,7 @@ function M2DecisionsSection({ decisionsData }) {
       </div>
 
       <div className="m2-decisions-grid">
-        {decisionsData.cacQuyetDinh.map((item) => (
+        {decisionsData.cacQuyetDinh?.map((item) => (
           <article key={item.so} className="m2-decision-card">
             <div className="m2-card-header">
               <span className="m2-card-num">{item.so}</span>
@@ -31,7 +33,12 @@ function M2DecisionsSection({ decisionsData }) {
 
             {/* Ảnh minh họa tư liệu (nếu có) hoặc Khối Tuyên ngôn trọng tâm */}
             {item.hinhAnh ? (
-              <div className="m2-card-img-wrap">
+              <div
+                className="m2-card-img-wrap"
+                onClick={() => onOpenPhoto && onOpenPhoto({ src: item.hinhAnh, nhan: item.tieuDe, chuThich: item.chuThichAnh })}
+                style={{ cursor: onOpenPhoto ? 'zoom-in' : 'default' }}
+                title={onOpenPhoto ? 'Nhấn để phóng to toàn bộ ảnh' : undefined}
+              >
                 <img src={item.hinhAnh} alt={item.chuThichAnh} loading="lazy" />
                 <span className="m2-card-img-caption">{item.chuThichAnh}</span>
               </div>

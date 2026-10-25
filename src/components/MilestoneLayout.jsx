@@ -9,7 +9,8 @@ import InfoCard from './InfoCard.jsx';
 import Gallery from './Gallery.jsx';
 import VideoEmbed from './VideoEmbed.jsx';
 import MilestoneNav from './MilestoneNav.jsx';
-import GemButton from './GemButton.jsx';
+import HeaderNavPills from './HeaderNavPills.jsx';
+import AiAppendixModal from './AiAppendixModal.jsx';
 
 // Map màu sang hex
 const MAU_HEX = {
@@ -84,6 +85,7 @@ function MilestoneLayout({ data }) {
 
   // Câu hỏi tương tác: toggle hiện gợi ý (nếu có)
   const [hienGoiY, setHienGoiY] = useState(false);
+  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
 
   // Scroll lên đầu trang khi chuyển cột mốc
   useEffect(() => {
@@ -114,6 +116,27 @@ function MilestoneLayout({ data }) {
         <Link to="/" className="nut-giay nut-ve-poster" aria-label="Quay về trang chủ poster">
           ← Về poster
         </Link>
+
+        {/* Cụm công cụ bên phải: Nav 1–7 (khóa các mốc khác) + Phụ lục AI */}
+        <div style={{ position: 'absolute', top: '1rem', right: '1rem', display: 'flex', alignItems: 'center', gap: '0.65rem', zIndex: 10 }}>
+          <HeaderNavPills currentMilestone={id} total={7} />
+
+          <button
+            type="button"
+            className="nut-giay"
+            onClick={() => setIsAiModalOpen(true)}
+            aria-label="Xem Phụ lục sử dụng AI"
+            style={{
+              fontSize: '0.82rem',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.35rem',
+            }}
+          >
+            <span style={{ color: 'var(--m1-gold, #B98B4A)' }}>✦</span>
+            Phụ lục AI
+          </button>
+        </div>
 
         {/* Số cột mốc lớn trong vòng tròn */}
         <motion.div
@@ -229,7 +252,7 @@ function MilestoneLayout({ data }) {
                 margin: '0 auto 2rem',
               }}
             >
-              Tư liệu lịch sử cho cột mốc này đang được biên soạn chi tiết theo chuẩn bảo tàng cao cấp. Vui lòng quay lại Cột mốc 01 để theo dõi trọn vẹn quyết sách bản lề tháng 11/1939.
+              Tư liệu lịch sử cho cột mốc này đang được biên soạn chi tiết theo chuẩn bảo tàng cao cấp. Vui lòng quay lại Cột mốc 02 để theo dõi trọn vẹn quyết sách bản lề tháng 11/1939.
             </p>
             <div
               style={{
@@ -240,7 +263,7 @@ function MilestoneLayout({ data }) {
               }}
             >
               <Link
-                to="/cot-moc/1"
+                to="/cot-moc/2"
                 className="nut-giay"
                 style={{
                   fontWeight: 700,
@@ -248,7 +271,7 @@ function MilestoneLayout({ data }) {
                   color: 'var(--do-dam)',
                 }}
               >
-                ← Xem Cột mốc 01 (11/1939)
+                ← Xem Cột mốc 02 (11/1939)
               </Link>
               <Link to="/" className="nut-giay">
                 🗺 Về poster bản đồ
@@ -499,8 +522,11 @@ function MilestoneLayout({ data }) {
         <MilestoneNav currentId={id} />
       </main>
 
-      {/* Nút Gem nổi góc dưới phải */}
-      <GemButton milestoneId={id} />
+      {/* MODAL PHỤ LỤC SỬ DỤNG AI */}
+      <AiAppendixModal
+        isOpen={isAiModalOpen}
+        onClose={() => setIsAiModalOpen(false)}
+      />
     </div>
   );
 }

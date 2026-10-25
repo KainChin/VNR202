@@ -1,293 +1,302 @@
 // src/data/milestone1.js
-// Dữ liệu Cột mốc 01: Tháng 11/1939 – Chuyển hướng chiến lược
-// Nội dung cô đọng, súc tích, chuẩn phong cách trưng bày bảo tàng
+// Dữ liệu Cột mốc 01: 1930 – ĐẢNG CỘNG SẢN VIỆT NAM RA ĐỜI
+// Bước ngoặt vĩ đại mở đầu tiến trình cách mạng Việt Nam
 
 export default {
   id: 1,
   slug: '1',
-  thoiGian: '11/1939',
-  tieuDe: 'CHUYỂN HƯỚNG CHIẾN LƯỢC',
-  phuDe: 'Chiến tranh bùng nổ – Cách mạng cần một hướng đi mới.',
-  mau: '#8F2418',
+  thoiGian: '1930',
+  tieuDe: 'ĐẢNG CỘNG SẢN VIỆT NAM RA ĐỜI',
+  phuDe: 'Mùa xuân 1930 – Mở ra con đường cứu nước đúng đắn cho dân tộc Việt Nam.',
+  mau: '#8B1A10',
 
-  // Chuỗi chiến lược tổng thể (Strategy Rail)
+  // Chuỗi chiến lược tổng thể 7 mốc
   chuoiChienLuoc: [
     {
       id: 1,
       so: '01',
-      ten: 'Chuyển hướng đúng',
-      moc: '11/1939',
+      ten: 'Đảng ra đời',
+      moc: '1930',
       isActive: true,
-      moTa: 'Hội nghị TW6: Đặt giải phóng dân tộc lên hàng đầu',
+      moTa: 'Hội nghị thành lập Đảng tại Hương Cảng',
     },
     {
       id: 2,
       so: '02',
-      ten: 'Chuẩn bị lực lượng',
-      moc: '1941–1944',
+      ten: 'Mở đầu chuyển hướng',
+      moc: '11/1939',
       isActive: false,
-      moTa: 'Thành lập Việt Minh, xây dựng căn cứ và lực lượng vũ trang',
+      moTa: 'Hội nghị TW6: Đặt giải phóng dân tộc lên hàng đầu',
     },
     {
       id: 3,
       so: '03',
-      ten: 'Nhận diện thời cơ',
-      moc: '3–8/1945',
+      ten: 'Hoàn chỉnh đường lối',
+      moc: '05/1941',
       isActive: false,
-      moTa: 'Cao trào kháng Nhật cứu nước',
+      moTa: 'Hội nghị TW8: Thành lập Việt Minh',
     },
     {
       id: 4,
       so: '04',
+      ten: 'Chuẩn bị lực lượng',
+      moc: '1941–1944',
+      isActive: false,
+      moTa: 'Xây dựng căn cứ và Đội VNTTGPQ',
+    },
+    {
+      id: 5,
+      so: '05',
+      ten: 'Cao trào kháng Nhật',
+      moc: '3–8/1945',
+      isActive: false,
+      moTa: 'Chỉ thị Nhật – Pháp bắn nhau',
+    },
+    {
+      id: 6,
+      so: '06',
       ten: 'Chớp thời cơ',
       moc: '8/1945',
       isActive: false,
       moTa: 'Tổng khởi nghĩa giành chính quyền',
     },
     {
-      id: 5,
-      so: '05',
-      ten: 'Thắng lợi',
+      id: 7,
+      so: '07',
+      ten: 'Tuyên ngôn Độc lập',
       moc: '2/9/1945',
       isActive: false,
-      moTa: 'Tuyên ngôn Độc lập',
+      moTa: 'Nước Việt Nam Dân chủ Cộng hòa ra đời',
     },
   ],
 
   // 1. HERO COMPOSITION
   hero: {
     cotMoc: 'CỘT MỐC 01',
-    namThang: '11 / 1939',
-    tieuDe: 'CHUYỂN HƯỚNG CHIẾN LƯỢC',
-    cauPhu: 'Chiến tranh bùng nổ – Cách mạng cần một hướng đi mới.',
+    namThang: '1930',
+    tieuDe: 'ĐẢNG CỘNG SẢN VIỆT NAM RA ĐỜI',
+    cauPhu: 'Mùa xuân 1930 – Mở ra con đường cứu nước đúng đắn cho dân tộc Việt Nam.',
     thongDiepCotLoi:
-      'Quyết định lịch sử đặt giải phóng dân tộc lên hàng đầu, mở đường cho thắng lợi Cách mạng Tháng Tám 1945.',
-    composition: {
-      tieuDeAnh: 'Tư liệu lịch sử mùa thu 1939',
+      'Chấm dứt cuộc khủng hoảng sâu sắc về đường lối và giai cấp lãnh đạo, mở đường cho mọi thắng lợi của cách mạng Việt Nam.',
+    anhHero: {
+      src: '/images/m1-dang-ra-doi.svg',
+      nhan: 'HỘI NGHỊ THÀNH LẬP ĐẢNG 1930',
       chuThich:
-        'Tư liệu mùa thu 1939: Chiến tranh thế giới II bùng nổ, Pháp đàn áp và Hội nghị TW6 tại Bà Điểm (Hóc Môn).',
-      nguon: 'Lưu trữ Bảo tàng Lịch sử Quốc gia & Viện Lịch sử Đảng',
-      danhSachAnh: [
-        {
-          src: '/images/m1-ww2.png',
-          nhan: 'Chiến tranh thế giới II',
-          thoiGian: '01/09/1939',
-          chuThich: 'Phát xít Đức tấn công Ba Lan, Thế chiến II bùng nổ',
-        },
-        {
-          src: '/images/m1-phap-dan-ap.png',
-          nhan: 'Đông Dương thời chiến',
-          thoiGian: 'Mùa thu 1939',
-          chuThich: 'Thực dân Pháp tăng cường đàn áp, khủng bố phong trào cách mạng',
-        },
-        {
-          src: '/images/m1-hoi-nghi-tw6.png',
-          nhan: 'Hội nghị Trung ương 6',
-          thoiGian: '06–08/11/1939',
-          chuThich: 'Hội nghị diễn ra bí mật tại Bà Điểm, Hóc Môn, Gia Định',
-        },
+        'Hội nghị hợp nhất các tổ chức cộng sản tại Cửu Long (Hương Cảng, Trung Quốc) do đồng chí Nguyễn Ái Quốc chủ trì (3/2/1930).',
+      nguon: 'Viện Lịch sử Đảng & Bảo tàng Lịch sử Quốc gia',
+    },
+  },
+
+  // 2. VÌ SAO ĐẢNG RA ĐỜI? (2 cột + câu nhấn giữa)
+  viSaoThanhLap: {
+    tieuDe: 'VÌ SAO ĐẢNG RA ĐỜI?',
+    phuDe:
+      'Đòi hỏi bức thiết của lịch sử dân tộc trước ách thống trị tàn bạo của thực dân Pháp.',
+    cotTrai: {
+      tieuDe: 'Khủng hoảng đường lối cứu nước',
+      diemChinh: [
+        'Các phong trào Cần Vương, Đông Du, Duy Tân, khởi nghĩa Yên Thế... đều lần lượt thất bại.',
+        'Giai cấp phong kiến và tư sản dân tộc không đủ khả năng gánh vác sứ mệnh giải phóng non sông.',
+        'Dân tộc Việt Nam chìm trong đêm tối, bức thiết đòi hỏi một con đường cứu nước mới.',
       ],
     },
+    cotPhai: {
+      tieuDe: 'Chủ nghĩa Mác – Lênin truyền bá',
+      diemChinh: [
+        'Nguyễn Ái Quốc tìm thấy con đường giải phóng dân tộc từ Luận cương của Lênin năm 1920.',
+        'Năm 1929, ba tổ chức cộng sản ra đời ở ba miền nhưng hoạt động biệt lập, tranh giành ảnh hưởng.',
+        'Yêu cầu sống còn: Phải thống nhất các tổ chức thành một chính đảng duy nhất để quy tụ sức mạnh.',
+      ],
+    },
+    cauNhanGiua: 'Thống nhất tư tưởng và tổ chức → quy tụ sức mạnh toàn dân tộc.',
   },
 
-  // 2. BỐI CẢNH LỊCH SỬ (3 mốc ngắn gọn)
-  boiCanh: {
-    tieuDe: 'BỐI CẢNH LỊCH SỬ',
-    phuDe: 'Ba biến động dồn dập mùa thu 1939 làm thay đổi cục diện cách mạng.',
-    cacMoc: [
-      {
-        so: '01',
-        thoiDiem: '01/09/1939',
-        tieuDe: 'Thế chiến II bùng nổ',
-        moTa: 'Đức đánh Ba Lan, Pháp tham chiến; chính quyền thuộc địa chuyển sang thời chiến.',
-        hinhAnh: '/images/m1-ww2.png',
-        chuThich: 'Thế chiến II bùng nổ tại châu Âu',
-      },
-      {
-        so: '02',
-        thoiDiem: 'Đông Dương',
-        tieuDe: 'Pháp tăng cường đàn áp',
-        moTa: 'Thủ tiêu dân chủ, đóng cửa báo chí tiến bộ, lùng sục và bắt bớ cán bộ Đảng.',
-        hinhAnh: '/images/m1-phap-dan-ap.png',
-        chuThich: 'Khủng bố trắng tại Đông Dương',
-      },
-      {
-        so: '03',
-        thoiDiem: '06–08/11/1939',
-        tieuDe: 'Hội nghị Trung ương 6',
-        moTa: 'Họp khẩn cấp tại Bà Điểm (Hóc Môn), quyết định chuyển hướng chỉ đạo chiến lược.',
-        hinhAnh: '/images/m1-hoi-nghi-tw6.png',
-        chuThich: 'Hội nghị TW6 tại Bà Điểm, Hóc Môn',
-      },
-    ],
-  },
-
-  // 3. HỘI NGHỊ TRUNG ƯƠNG 6
-  hoiNghiTW6: {
-    tieuDe: 'HỘI NGHỊ TRUNG ƯƠNG 6',
+  // 3. MỐC THEN CHỐT: HỘI NGHỊ THÀNH LẬP ĐẢNG
+  mocThenChot: {
+    tieuDe: 'MỐC THEN CHỐT: MÙA XUÂN 1930',
+    tenSuKien: 'HỘI NGHỊ HỢP NHẤT THÀNH LẬP ĐẢNG CỘNG SẢN VIỆT NAM',
     thongTinCoBan: [
-      { nhan: 'Thời gian', giaTri: '6 – 8/11/1939' },
-      { nhan: 'Địa điểm', giaTri: 'Bà Điểm, Hóc Môn, Gia Định' },
-      { nhan: 'Chủ trì', giaTri: 'Tổng Bí thư Nguyễn Văn Cừ' },
-    ],
-    anhTuLieu: [
       {
-        src: '/images/m1-nguyen-van-cu.png',
-        tieuDe: 'Tổng Bí thư Nguyễn Văn Cừ',
-        ghiChu: 'Chủ trì Hội nghị Trung ương 6 (1912 – 1941)',
+        nhan: 'Thời gian',
+        giaTri: '06/01 – 07/02/1930 (lấy ngày 3/2 làm ngày kỷ niệm)',
       },
       {
-        src: '/images/m1-badiem-hocmon.png',
-        tieuDe: 'Căn cứ Bà Điểm, Hóc Môn',
-        ghiChu: 'Địa bàn bí mật che chở cơ quan đầu não của Đảng',
+        nhan: 'Địa điểm',
+        giaTri: 'Cửu Long (Hương Cảng, Trung Quốc)',
+      },
+      {
+        nhan: 'Chủ trì',
+        giaTri: 'Đồng chí Nguyễn Ái Quốc (đại diện Quốc tế Cộng sản)',
+      },
+      {
+        nhan: 'Thành phần',
+        giaTri: 'Đại biểu Đông Dương Cộng sản Đảng và An Nam Cộng sản Đảng',
       },
     ],
-    quoteBox:
-      'Trong bối cảnh chiến tranh và đàn áp gia tăng, Hội nghị Trung ương 6 mở đầu quá trình chuyển hướng chiến lược, đặt nhiệm vụ giải phóng dân tộc lên hàng đầu.',
+    anhTuLieu: {
+      src: '/images/m1-dang-ra-doi.svg',
+      tieuDe: 'Văn kiện thành lập Đảng Cộng sản Việt Nam',
+      ghiChu: 'Hợp nhất các tổ chức cộng sản thành một Đảng duy nhất lấy tên là Đảng Cộng sản Việt Nam',
+    },
+    moTa:
+      'Hội nghị đã nhất trí hợp nhất các tổ chức cộng sản thành Đảng Cộng sản Việt Nam; thông qua Chánh cương vắn tắt, Sách lược vắn tắt do Nguyễn Ái Quốc soạn thảo – Cương lĩnh chính trị đầu tiên của Đảng.',
     videoShorts: {
-      youtubeId: 'NpzO4gIvrtQ',
-      url: 'https://www.youtube.com/shorts/NpzO4gIvrtQ',
-      tieuDeModal: 'Tư liệu: Tổng Bí thư Nguyễn Văn Cừ & Hội nghị TW6',
+      coVideo: false,
+      youtubeId: '',
+      videoTitle: 'Tư liệu Lịch sử: Mùa xuân 1930 – Đảng Cộng sản Việt Nam ra đời',
       nhanNut: 'Xem tư liệu',
-      chuThich: 'Video tư liệu ngắn về Tổng Bí thư Nguyễn Văn Cừ',
+      nhanNutPlaceholder: 'Xem tư liệu: Sắp cập nhật',
     },
   },
 
-  // 4. FLOW "LOGIC CHUYỂN HƯỚNG" (6 bước cô đọng nhân - quả)
-  logicChuyenHuong: {
-    tieuDe: 'LOGIC CHUYỂN HƯỚNG CHIẾN LƯỢC',
-    phuDe: 'Dòng tư duy nhân – quả giải thích vì sao Đảng bắt buộc phải đổi hướng chỉ đạo',
+  // 4. CƯƠNG LĨNH CHÍNH TRỊ ĐẦU TIÊN (2 khối lớn)
+  cuongLinhChinhTri: {
+    tieuDe: 'NỘI DUNG CƯƠNG LĨNH ĐẦU TIÊN',
+    phuDe:
+      'Cương lĩnh chính trị sáng tạo kết hợp nhuần nhuyễn chủ nghĩa Mác – Lênin với thực tiễn cách mạng Việt Nam.',
+    khoiMucTieu: {
+      badge: 'Khối 01',
+      tieuDe: 'MỤC TIÊU & NHIỆM VỤ CHIẾN LƯỢC',
+      headline: 'Độc lập dân tộc gắn liền với chủ nghĩa xã hội',
+      cacDiem: [
+        {
+          tieuDeNho: 'Phương hướng chiến lược',
+          moTa: 'Làm tư sản dân quyền cách mạng và thổ địa cách mạng để đi tới xã hội cộng sản.',
+        },
+        {
+          tieuDeNho: 'Nhiệm vụ chính trị hàng đầu',
+          moTa: 'Đánh đổ đế quốc Pháp và bọn phong kiến, làm cho nước Việt Nam hoàn toàn độc lập.',
+        },
+        {
+          tieuDeNho: 'Xây dựng chế độ mới',
+          moTa: 'Thành lập chính phủ công nông binh, tổ chức quân đội công nông để bảo vệ thành quả.',
+        },
+      ],
+      callout: 'Độc lập cho dân tộc, tự do và ruộng đất cho nhân dân.',
+    },
+    khoiLucLuong: {
+      badge: 'Khối 02',
+      tieuDe: 'LỰC LƯỢNG & VAI TRÒ LÃNH ĐẠO',
+      headline: 'Liên minh công nông là gốc, Đảng là đội tiên phong',
+      cacDiem: [
+        {
+          tieuDeNho: 'Nòng cốt cách mạng',
+          moTa: 'Công nhân và nông dân là lực lượng chính, là gốc rễ của cách mạng giải phóng.',
+        },
+        {
+          tieuDeNho: 'Đại đoàn kết toàn dân',
+          moTa: 'Hết sức lôi kéo tiểu tư sản, trí thức, trung nông; trung lập phú nông, trung tiểu địa chủ.',
+        },
+        {
+          tieuDeNho: 'Hạt nhân lãnh đạo',
+          moTa: 'Đảng là đội tiên phong của vô sản giai cấp, lấy chủ nghĩa Mác – Lênin làm nền tảng kim chỉ nam.',
+        },
+      ],
+      callout: 'Đảng lãnh đạo là nhân tố quyết định mọi thắng lợi của cách mạng.',
+    },
+  },
+
+  // 5. FLOW "LOGIC RA ĐỜI CỦA ĐẢNG" (6 bước)
+  logicRaDoi: {
+    tieuDe: 'LOGIC LỊCH SỬ THÀNH LẬP ĐẢNG',
+    phuDe:
+      'Sự kết hợp biện chứng giữa Chủ nghĩa Mác – Lênin, Phong trào công nhân và Phong trào yêu nước.',
     cacBuoc: [
       {
         buoc: 1,
-        tenBuoc: 'Thế chiến II bùng nổ (01/09/1939)',
-        nguyenNhan: 'Pháp tham chiến tại châu Âu.',
-        ketQua: 'Chuyển thuộc địa sang cơ chế thời chiến.',
-        tag: 'Quốc tế',
+        tag: 'BẾ TẮC CỨU NƯỚC',
+        tenBuoc: 'Phong trào yêu nước cũ lâm vào bế tắc',
+        nguyenNhan: 'Các phong trào Cần Vương, Đông Kinh Nghĩa Thục, Yên Bái lần lượt tan vỡ.',
+        ketQua: 'Chứng minh hệ tư tưởng phong kiến và tư sản không thể giải phóng dân tộc.',
       },
       {
         buoc: 2,
-        tenBuoc: 'Pháp khủng bố trắng khốc liệt',
-        nguyenNhan: 'Thiết lập nền độc tài quân sự.',
-        ketQua: 'Thủ tiêu dân chủ, đàn áp gắt gao phong trào cách mạng.',
-        tag: 'Đàn áp',
+        tag: 'TÌM THẤY CON ĐƯỜNG',
+        tenBuoc: 'Nguyễn Ái Quốc đến với Chủ nghĩa Mác – Lênin',
+        nguyenNhan: 'Bôn ba qua nhiều nước, Người đọc Luận cương của Lênin mùa hè 1920.',
+        ketQua: 'Khẳng định con đường giải phóng duy nhất: Cách mạng vô sản.',
       },
       {
         buoc: 3,
-        tenBuoc: 'Mâu thuẫn dân tộc lên đỉnh điểm',
-        nguyenNhan: 'Chính sách vơ vét phục vụ chiến tranh.',
-        ketQua: 'Giải phóng dân tộc trở thành nhiệm vụ cấp bách số một.',
-        tag: 'Mâu thuẫn',
+        tag: 'CHUẨN BỊ TỔ CHỨC',
+        tenBuoc: 'Thành lập Hội Việt Nam Cách mạng Thanh niên (1925)',
+        nguyenNhan: 'Cần một tổ chức huấn luyện cán bộ và truyền bá lý luận về trong nước.',
+        ketQua: 'Đào tạo lớp cán bộ nòng cốt đầu tiên cho phong trào cách mạng cả nước.',
       },
       {
         buoc: 4,
-        tenBuoc: 'Đường lối cũ không còn phù hợp',
-        nguyenNhan: 'Đấu tranh công khai, đòi dân chủ bị triệt phá.',
-        ketQua: 'Tất yếu phải chuyển sang phương thức bí mật.',
-        tag: 'Tất yếu',
+        tag: 'PHÂN HÓA VÀ TRƯỞNG THÀNH',
+        tenBuoc: 'Ba tổ chức cộng sản xuất hiện (1929)',
+        nguyenNhan: 'Phong trào công nông phát triển mạnh mẽ vượt khỏi khuôn khổ tổ chức cũ.',
+        ketQua: 'Đông Dương CS Đảng, An Nam CS Đảng, Đông Dương CS Liên đoàn lần lượt ra đời.',
       },
       {
         buoc: 5,
-        tenBuoc: 'Hội nghị TW6 họp tại Bà Điểm',
-        nguyenNhan: 'TBT Nguyễn Văn Cừ triệu tập họp khẩn cấp.',
-        ketQua: 'Kịp thời đề ra quyết sách chuyển hướng chiến lược.',
-        tag: 'Quyết sách',
+        tag: 'HỢP NHẤT LỊCH SỬ',
+        tenBuoc: 'Hội nghị hợp nhất tại Hương Cảng (3/2/1930)',
+        nguyenNhan: 'Nguy cơ chia rẽ nội bộ, Nguyễn Ái Quốc chủ động triệu tập hợp nhất.',
+        ketQua: 'Thống nhất thành một chính đảng duy nhất: Đảng Cộng sản Việt Nam.',
       },
       {
         buoc: 6,
-        tenBuoc: 'Đặt giải phóng dân tộc lên hàng đầu',
-        nguyenNhan: 'Quy tụ toàn dân chống đế quốc giành độc lập.',
-        ketQua: 'Tạo tiền đề trực tiếp cho thắng lợi Tháng Tám 1945.',
-        tag: 'Mục tiêu',
+        tag: 'KỶ NGUYÊN MỚI',
+        tenBuoc: 'Bước ngoặt mở đầu cho Cách mạng Tháng Tám',
+        nguyenNhan: 'Cách mạng có ngọn cờ lãnh đạo duy nhất và Cương lĩnh chính trị đúng đắn.',
+        ketQua: 'Đặt nền móng xuyên suốt dẫn tới cao trào 1939–1945 và Tổng khởi nghĩa thành công.',
       },
     ],
   },
 
-  // 5. ĐẢNG ĐIỀU CHỈNH NHƯ THẾ NÀO? (2 khối lớn vắn tắt)
-  dieuChinhChienLuoc: {
-    tieuDe: 'ĐẢNG ĐIỀU CHỈNH NHƯ THẾ NÀO?',
-    phuDe: 'Hai quyết sách bản lề thay đổi toàn diện phương hướng và phương pháp cách mạng',
-    khoiNhiemVu: {
-      tieuDe: 'ĐIỀU CHỈNH VỀ NHIỆM VỤ CHIẾN LƯỢC',
-      vaiTro: 'Xác định mục tiêu tối thượng trong thời chiến',
-      noiDungChinh: 'Đặt giải phóng dân tộc lên hàng đầu, trên hết và trước hết.',
-      cacDiem: [
-        {
-          tieuDeNho: 'Tập trung chống đế quốc',
-          moTa: 'Giành độc lập dân tộc là yêu cầu sống còn và cấp bách nhất.',
-        },
-        {
-          tieuDeNho: 'Tạm gác khẩu hiệu ruộng đất',
-          moTa: 'Tập trung đại đoàn kết toàn dân; chỉ tịch thu ruộng đất của đế quốc và phản động.',
-        },
-        {
-          tieuDeNho: 'Lập Mặt trận phản đế',
-          moTa: 'Thành lập Mặt trận Dân tộc Thống nhất Phản đế Đông Dương để quy tụ mọi tầng lớp.',
-        },
-      ],
-    },
-    khoiHinhThuc: {
-      tieuDe: 'ĐIỀU CHỈNH VỀ HÌNH THỨC & PHƯƠNG PHÁP',
-      vaiTro: 'Bảo toàn lực lượng và chuẩn bị điều kiện vũ trang',
-      noiDungChinh: 'Chuyển trọng tâm sang hoạt động bí mật và bất hợp pháp.',
-      cacDiem: [
-        {
-          tieuDeNho: 'Rút vào hoạt động bí mật',
-          moTa: 'Bảo toàn cơ quan đầu não và mạch máu tổ chức Đảng giữa vòng vây khủng bố.',
-        },
-        {
-          tieuDeNho: 'Củng cố căn cứ quần chúng',
-          moTa: 'Chuyển trọng tâm về nông thôn và ngoại vi (Bà Điểm, Hóc Môn) làm bàn đạp.',
-        },
-        {
-          tieuDeNho: 'Chuẩn bị khởi nghĩa vũ trang',
-          moTa: 'Tích lũy thực lực bí mật để tiến tới bạo lực cách mạng khi thời cơ xuất hiện.',
-        },
-      ],
-    },
-  },
-
-  // 6. Ý NGHĨA VÀ TIẾN TRÌNH 1939 – 1945 (3 điểm đúc kết ngắn gọn)
-  yNghiaTienTrinh: {
-    tieuDe: 'Ý NGHĨA LỊCH SỬ & TIẾN TRÌNH',
+  // 6. Ý NGHĨA LỊCH SỬ
+  yNghia: {
+    tieuDe: 'Ý NGHĨA LỊCH SỬ',
     thongDiepLon:
-      'Quyết định tháng 11/1939 mở đầu quá trình chuẩn bị đường lối cho thắng lợi năm 1945.',
-    cauHoiCotLoi: [
+      'Sự ra đời của Đảng Cộng sản Việt Nam mùa xuân 1930 là bước ngoặt vĩ đại của lịch sử dân tộc, chấm dứt cuộc khủng hoảng sâu sắc về đường lối cứu nước, mở đường trực tiếp cho thắng lợi của Cách mạng Tháng Tám 1945.',
+    baDiemCotLoi: [
       {
-        cauHoi: 'Vì sao chuyển hướng?',
+        cauHoi: '1. Chấm dứt khủng hoảng đường lối',
         cauTraLoi:
-          'Thế chiến bùng nổ, Pháp đàn áp gắt gao; mâu thuẫn dân tộc lên cao nhất; đấu tranh công khai không còn phù hợp.',
+          'Khẳng định dứt khoát con đường cứu nước duy nhất đúng đắn: Cách mạng giải phóng dân tộc gắn liền với chủ nghĩa xã hội.',
       },
       {
-        cauHoi: 'Điều chỉnh thế nào?',
+        cauHoi: '2. Thống nhất sức mạnh dân tộc',
         cauTraLoi:
-          'Đặt độc lập dân tộc lên hàng đầu; tạm gác khẩu hiệu ruộng đất; chuyển sang hoạt động bí mật và bất hợp pháp.',
+          'Quy tụ giai cấp công nhân, nông dân và các tầng lớp yêu nước dưới sự lãnh đạo của một tổ chức tiên phong duy nhất.',
       },
       {
-        cauHoi: 'Ý nghĩa với năm 1945?',
+        cauHoi: '3. Nền tảng cho thắng lợi 1945',
         cauTraLoi:
-          'Bước mở đầu then chốt, tạo tiền đề để Hội nghị TW8 (5/1941) hoàn chỉnh trọn vẹn đường lối khởi nghĩa thắng lợi.',
+          'Là bước chuẩn bị quyết định đầu tiên, từ đó Đảng tôi luyện qua các cao trào 1930–1931, 1936–1939 để chuyển hướng chiến lược 1939–1945 giành chính quyền.',
       },
     ],
     timeline: [
-      { nam: '1939', giaiDoan: 'Khởi đầu', suKien: 'Mở đầu chuyển hướng chiến lược, đặt dân tộc lên hàng đầu.' },
-      { nam: '1940', giaiDoan: 'Khẳng định', suKien: 'Hội nghị TW7 tiếp tục khẳng định đường lối chuyển hướng.' },
-      { nam: '1941', giaiDoan: 'Hoàn chỉnh', suKien: 'Hội nghị TW8 hoàn chỉnh đường lối, thành lập Việt Minh.' },
-      { nam: '1945', giaiDoan: 'Thắng lợi', suKien: 'Tổng khởi nghĩa Tháng Tám thắng lợi trọn vẹn.' },
+      { nam: '1930', giaiDoan: 'Đảng ra đời' },
+      { nam: '11/1939', giaiDoan: 'Mở đầu chuyển hướng' },
+      { nam: '5/1941', giaiDoan: 'Hoàn chỉnh chuyển hướng' },
+      { nam: '8/1945', giaiDoan: 'Tổng khởi nghĩa' },
     ],
-    quoteLon: 'Thời cơ không tự đến, thời cơ được chuẩn bị bằng những quyết định đúng.',
+    quoteLon:
+      'Đảng ra đời là kết quả của sự kết hợp giữa chủ nghĩa Mác – Lênin với phong trào công nhân và phong trào yêu nước Việt Nam.',
     cta: {
-      nhan: 'Tiếp theo → 05/1941: Việt Minh ra đời',
       duongDan: '/cot-moc/2',
-      ghiChu: 'Cột mốc 02: Hoàn chỉnh chuyển hướng chiến lược tại Pác Bó',
+      nhan: 'Tiếp theo → 11/1939: Mở đầu chuyển hướng chiến lược',
+      ghiChu: 'Chuyển sang Cột mốc 02: Hội nghị Trung ương 6 tại Bà Điểm, Hóc Môn',
     },
   },
 
   // 7. NGUỒN TƯ LIỆU THAM KHẢO
   nguonTuLieu: [
-    { ten: 'Văn kiện Đảng Toàn tập, Tập 6 (1936–1939)', nhaXuatBan: 'NXB Chính trị quốc gia' },
-    { ten: 'Lịch sử Đảng Cộng sản Việt Nam, Tập 1 (1930–1954)', nhaXuatBan: 'NXB CTQG Sự thật' },
-    { ten: 'Đồng chí Nguyễn Văn Cừ – Nhà lãnh đạo xuất sắc của Đảng', nhaXuatBan: 'Viện Lịch sử Đảng' },
-    { ten: 'Hồ sơ Di tích Địa điểm Họp Hội nghị TW Đảng (11/1939)', nhaXuatBan: 'Hóc Môn, TP.HCM' },
+    {
+      ten: 'Văn kiện Đảng Toàn tập, Tập 2 (1930 – 1931)',
+      nxb: 'NXB Chính trị quốc gia Sự thật, Hà Nội',
+    },
+    {
+      ten: 'Hồ Chí Minh Toàn tập, Tập 3',
+      nxb: 'NXB Chính trị quốc gia Sự thật, Hà Nội',
+    },
+    {
+      ten: 'Giáo trình Lịch sử Đảng Cộng sản Việt Nam (Dành cho bậc đại học)',
+      nxb: 'NXB Chính trị quốc gia Sự thật, Hà Nội, 2021',
+    },
   ],
 };

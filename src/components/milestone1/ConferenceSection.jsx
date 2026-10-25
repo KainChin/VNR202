@@ -5,7 +5,7 @@
 
 import { memo } from 'react';
 
-function ConferenceSection({ confData }) {
+function ConferenceSection({ confData, onOpenVideo, onOpenPhoto }) {
   return (
     <section id="hoi-nghi" className="m1-section" aria-labelledby="heading-hoi-nghi">
       <div className="m1-sec-header">
@@ -16,11 +16,16 @@ function ConferenceSection({ confData }) {
       </div>
 
       <div className="conf-grid-split">
-        {/* CỘT TRÁI: 2 ẢNH (1 ẢNH TRÊN, 1 ẢNH DƯỚI) */}
+        {/* CỘT TRÁI: 2 ẢNH (1 ẢNH TRÊN, 1 ẢNH DƯỚI) CÓ THỂ CLICK PHÓNG TO */}
         <div className="conf-left-gallery">
           {confData.anhTuLieu.map((img, idx) => (
             <figure key={idx} className="conf-frame-card">
-              <div className="conf-frame-inner">
+              <div
+                className="conf-frame-inner"
+                onClick={() => onOpenPhoto && onOpenPhoto({ src: img.src, nhan: img.tieuDe, chuThich: img.ghiChu })}
+                style={{ cursor: onOpenPhoto ? 'zoom-in' : 'default' }}
+                title={onOpenPhoto ? 'Nhấn để phóng to toàn bộ ảnh' : undefined}
+              >
                 <img src={img.src} alt={img.tieuDe} loading="lazy" />
               </div>
               <figcaption className="conf-frame-info">
@@ -40,15 +45,43 @@ function ConferenceSection({ confData }) {
                 <span className="conf-video-badge">▶ PHIM TƯ LIỆU</span>
                 <span className="conf-video-title">{confData.videoShorts.tieuDeModal}</span>
               </div>
-              <a
-                href={confData.videoShorts.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="conf-video-ext-link"
-                title="Mở trên YouTube"
-              >
-                YouTube ↗
-              </a>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+                <span style={{ fontSize: '0.8rem', color: 'var(--m1-text-muted, #7A6A58)' }}>
+                  {confData.videoShorts.nguonTienTo || 'Nguồn: YouTube – '}
+                  <a
+                    href={confData.videoShorts.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: 'var(--m1-red, #8F2418)',
+                      fontWeight: 700,
+                      textDecoration: 'underline',
+                    }}
+                    title="Mở video trên YouTube"
+                  >
+                    {confData.videoShorts.nguonTenLink || 'Nguyễn Văn Cừ'}
+                  </a>
+                </span>
+                {onOpenVideo && (
+                  <button
+                    type="button"
+                    onClick={onOpenVideo}
+                    title="Mở rộng xem toàn bộ video"
+                    style={{
+                      background: 'rgba(185, 139, 74, 0.15)',
+                      border: '1px solid rgba(185, 139, 74, 0.45)',
+                      borderRadius: '4px',
+                      padding: '0.2rem 0.55rem',
+                      fontSize: '0.78rem',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      color: 'var(--m1-text-main, #2B1810)',
+                    }}
+                  >
+                    ⤢ Mở rộng
+                  </button>
+                )}
+              </div>
             </div>
             <div className="conf-video-embed-frame">
               <iframe

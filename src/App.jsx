@@ -7,28 +7,18 @@ import {
   Routes,
   Route,
   useLocation,
+  Navigate,
 } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import PosterHome from './components/PosterHome.jsx';
-import GemButton from './components/GemButton.jsx';
 
-// Trang chủ: poster + nút Gem
-function HomeWithGem() {
-  return (
-    <>
-      <PosterHome />
-      <GemButton milestoneId={null} />
-    </>
-  );
-}
-
-// Lazy-load 6 trang cột mốc để tối ưu performance
-const Milestone1 = lazy(() => import('./pages/Milestone1.jsx'));
+// Lazy-load các trang cột mốc để tối ưu performance
 const Milestone2 = lazy(() => import('./pages/Milestone2.jsx'));
 const Milestone3 = lazy(() => import('./pages/Milestone3.jsx'));
 const Milestone4 = lazy(() => import('./pages/Milestone4.jsx'));
 const Milestone5 = lazy(() => import('./pages/Milestone5.jsx'));
 const Milestone6 = lazy(() => import('./pages/Milestone6.jsx'));
+const Milestone7 = lazy(() => import('./pages/Milestone7.jsx'));
 
 // Biến thể animation "lật trang giấy" khi chuyển route
 const pageVariants = {
@@ -82,16 +72,17 @@ function AnimatedRoutes() {
         >
           <Suspense fallback={<Loading />}>
             <Routes location={location}>
-              {/* Trang chủ poster + nút Gem */}
-              <Route path="/" element={<HomeWithGem />} />
+              {/* Trang chủ poster */}
+              <Route path="/" element={<PosterHome />} />
 
-              {/* 6 trang cột mốc */}
-              <Route path="/cot-moc/1" element={<Milestone1 />} />
+              {/* Cột mốc 1 (1930) xem qua video popup trên poster; điều hướng về trang chủ nếu truy cập URL này */}
+              <Route path="/cot-moc/1" element={<Navigate to="/" replace />} />
               <Route path="/cot-moc/2" element={<Milestone2 />} />
               <Route path="/cot-moc/3" element={<Milestone3 />} />
               <Route path="/cot-moc/4" element={<Milestone4 />} />
               <Route path="/cot-moc/5" element={<Milestone5 />} />
               <Route path="/cot-moc/6" element={<Milestone6 />} />
+              <Route path="/cot-moc/7" element={<Milestone7 />} />
 
               {/* 404 – trang không tồn tại */}
               <Route

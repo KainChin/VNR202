@@ -1,0 +1,371 @@
+/* src/styles/presenter-mode.css */
+/* CHẾ ĐỘ THUYẾT TRÌNH (PRESENTER MODE) - PHONG CÁCH BẢO TÀNG CAO CẤP */
+/* Bảng màu: Nền kem #F4E9D2, Đỏ nâu #8F2418, Nâu đậm #35271D, Trắng kem #FFF9EE, Vàng gold #B98B4A */
+
+/* 1. TOÀN CỤC KHI BẬT CHẾ ĐỘ THUYẾT TRÌNH */
+.is-presenter-mode {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-presenter-mode {
+    scroll-behavior: auto !important;
+  }
+  .is-presenter-mode * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* Ẩn các thành phần thừa và header mặc định khi thuyết trình */
+.is-presenter-mode .m1-sticky-header,
+.is-presenter-mode .scroll-to-top-btn,
+.is-presenter-mode .nut-ve-poster,
+.is-presenter-mode .btn-cta-scroll-top {
+  display: none !important;
+}
+
+/* Tăng cỡ chữ màn chiếu cho các section */
+.is-presenter-mode .m1-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-top: 5rem !important;
+  padding-bottom: 3.5rem !important;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.is-presenter-mode .hero-title-main {
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem) !important;
+}
+
+.is-presenter-mode .m1-sec-title {
+  font-size: clamp(2rem, 3.2vw, 2.9rem) !important;
+}
+
+.is-presenter-mode .hero-lead-text,
+.is-presenter-mode .m1-sec-p {
+  font-size: 1.18rem !important;
+  line-height: 1.65 !important;
+}
+
+.is-presenter-mode .hero-quote-lead,
+.is-presenter-mode .meaning-lead-statement {
+  font-size: 1.45rem !important;
+  line-height: 1.6 !important;
+}
+
+.is-presenter-mode .conf-quote-callout,
+.is-presenter-mode .m2-conf-quote-callout {
+  font-size: 1.15rem !important;
+}
+
+/* 2. THANH CÔNG CỤ THUYẾT TRÌNH CỐ ĐỊNH Ở ĐẦU TRANG */
+.presenter-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 54px;
+  background: rgba(244, 233, 210, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1.5px solid rgba(185, 139, 74, 0.45);
+  box-shadow: 0 4px 16px rgba(43, 24, 16, 0.12);
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  font-family: var(--m1-font-sans, system-ui, sans-serif);
+}
+
+/* Thanh line tiến độ mỏng chạy dọc mép trên */
+.presenter-progress-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--m1-red, #8F2418);
+  transition: width 0.25s ease;
+  z-index: 2501;
+}
+
+.presenter-top-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.presenter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--m1-red, #8F2418);
+  color: #FFF9EE;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.presenter-section-counter {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--m1-red, #8F2418);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.presenter-section-total {
+  font-size: 0.88rem;
+  color: var(--m1-text-muted, #7A6A58);
+  font-weight: 600;
+}
+
+.presenter-top-right {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Đồng hồ đếm giờ */
+.presenter-timer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.75rem;
+  background: rgba(43, 24, 16, 0.08);
+  border: 1px solid rgba(185, 139, 74, 0.4);
+  border-radius: 4px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--m1-text, #35271D);
+  transition: all 0.25s ease;
+}
+
+.presenter-timer-badge.is-overtime {
+  background: rgba(185, 28, 28, 0.12);
+  border-color: #B91C1C;
+  color: #B91C1C;
+  animation: pulse-overtime 1.8s infinite;
+}
+
+@keyframes pulse-overtime {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+
+/* Nút điều khiển thuyết trình */
+.presenter-tool-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #FFF9EE;
+  border: 1px solid var(--m1-border, rgba(185, 139, 74, 0.4));
+  color: var(--m1-text, #35271D);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.presenter-tool-btn:hover,
+.presenter-tool-btn.is-active {
+  background: var(--m1-red, #8F2418);
+  color: #FFF9EE;
+  border-color: var(--m1-red, #8F2418);
+}
+
+.presenter-tool-btn:focus-visible {
+  outline: 2px solid var(--m1-gold, #B98B4A);
+  outline-offset: 2px;
+}
+
+/* 3. BẢNG GHI CHÚ DIỄN GIẢ (SPEAKER NOTES) NỔI GÓC DƯỚI */
+.presenter-speaker-notes-card {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  max-width: 440px;
+  width: calc(100vw - 3rem);
+  background: #FFF9EE;
+  border: 2px solid var(--m1-gold, #B98B4A);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(43, 24, 16, 0.25);
+  z-index: 2400;
+  overflow: hidden;
+  font-family: var(--m1-font-sans, system-ui, sans-serif);
+  animation: slide-up-notes 0.22s ease-out;
+}
+
+@keyframes slide-up-notes {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.presenter-notes-header {
+  background: var(--m1-bg-sec, #EEDDBB);
+  border-bottom: 1px solid var(--m1-border, rgba(185, 139, 74, 0.4));
+  padding: 0.6rem 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.presenter-notes-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.presenter-notes-heading {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--m1-red, #8F2418);
+  margin: 0;
+}
+
+.presenter-notes-duration {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #FFF9EE;
+  background: var(--m1-gold, #B98B4A);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+}
+
+.presenter-notes-close {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--m1-text-muted, #7A6A58);
+  cursor: pointer;
+  padding: 0.2rem;
+  transition: color 0.2s ease;
+}
+
+.presenter-notes-close:hover {
+  color: var(--m1-red, #8F2418);
+}
+
+.presenter-notes-body {
+  padding: 1rem 1.15rem;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.presenter-notes-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--m1-text, #35271D);
+  margin: 0;
+  font-weight: 500;
+}
+
+.presenter-notes-footer {
+  padding: 0.45rem 1rem;
+  background: rgba(238, 221, 187, 0.45);
+  border-top: 1px dashed rgba(185, 139, 74, 0.35);
+  font-size: 0.74rem;
+  color: var(--m1-text-muted, #7A6A58);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 4. MODAL HƯỚNG DẪN PHÍM TẮT (?) */
+.presenter-help-dialog {
+  background: #FFF9EE;
+  border: 2px solid var(--m1-red, #8F2418);
+  border-radius: 8px;
+  max-width: 520px;
+  width: 90vw;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+  font-family: var(--m1-font-sans, system-ui, sans-serif);
+}
+
+.presenter-help-title {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--m1-red, #8F2418);
+  margin: 0 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.presenter-shortcuts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+}
+
+.presenter-shortcuts-table tr {
+  border-bottom: 1px solid rgba(185, 139, 74, 0.25);
+}
+
+.presenter-shortcuts-table tr:last-child {
+  border-bottom: none;
+}
+
+.presenter-shortcuts-table td {
+  padding: 0.65rem 0.5rem;
+  font-size: 0.92rem;
+  color: var(--m1-text, #35271D);
+}
+
+.presenter-key-kbd {
+  display: inline-block;
+  background: var(--m1-bg-sec, #EEDDBB);
+  border: 1px solid rgba(185, 139, 74, 0.6);
+  border-bottom: 2px solid rgba(185, 139, 74, 0.8);
+  border-radius: 4px;
+  padding: 0.2rem 0.55rem;
+  font-family: monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--m1-red, #8F2418);
+}
+
+/* 5. HIỆU ỨNG HIỆN THEO BƯỚC (STEP-BY-STEP REVEAL) */
+.presenter-step {
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.is-presenter-mode .presenter-step--hidden {
+  opacity: 0.18 !important;
+  transform: translateY(4px);
+  filter: grayscale(80%);
+}
+
+.is-presenter-mode .presenter-step--active {
+  opacity: 1 !important;
+  transform: translateY(0);
+  filter: none;
+  box-shadow: 0 0 0 2px var(--m1-gold, #B98B4A);
+  border-radius: 6px;
+}

@@ -23,48 +23,48 @@ const HOTSPOTS = [
     left: 18.0,
     top: 51.7,
     nhan: '11/1939 · Mở đầu chuyển hướng chiến lược',
-    duongDan: '/cot-moc/1',
-    mauMobile: 'var(--m1)',
+    duongDan: '/cot-moc/2',
+    mauMobile: 'var(--m1, #8F2418)',
   },
   {
     so: 3,
     left: 32.9,
     top: 43.9,
     nhan: '5/1941 · Hoàn chỉnh chuyển hướng, Việt Minh',
-    duongDan: '/cot-moc/2',
-    mauMobile: 'var(--m2)',
+    duongDan: '/cot-moc/3',
+    mauMobile: 'var(--m2, #1F4E79)',
   },
   {
     so: 4,
     left: 46.7,
     top: 37.5,
     nhan: '1941–1944 · Xây dựng lực lượng',
-    duongDan: '/cot-moc/3',
-    mauMobile: 'var(--m3)',
+    duongDan: '/cot-moc/4',
+    mauMobile: 'var(--m4, #D9501E)',
   },
   {
     so: 5,
     left: 60.5,
     top: 31.2,
     nhan: '3–8/1945 · Cao trào kháng Nhật – Chuẩn bị thời cơ',
-    duongDan: '/cot-moc/4',
-    mauMobile: 'var(--m4)',
+    duongDan: '/cot-moc/5',
+    mauMobile: 'var(--m5, #A31621)',
   },
   {
     so: 6,
     left: 73.0,
     top: 21.7,
     nhan: '8/1945 · Chớp thời cơ Tổng khởi nghĩa',
-    duongDan: '/cot-moc/5',
-    mauMobile: 'var(--m5)',
+    duongDan: '/cot-moc/6',
+    mauMobile: '#A8541A',
   },
   {
     so: 7,
     left: 86.8,
     top: 18.1,
     nhan: '2/9/1945 · Tuyên ngôn Độc lập',
-    duongDan: '/cot-moc/6',
-    mauMobile: 'var(--m6)',
+    duongDan: '/cot-moc/7',
+    mauMobile: '#C98F10',
   },
 ];
 
@@ -100,14 +100,14 @@ function PosterHome() {
         title={isFullscreen ? 'Thu nhỏ màn hình (Esc)' : 'Toàn màn hình [ ]'}
       >
         {isFullscreen ? (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 14h5v5" />
             <path d="M20 14h-5v5" />
             <path d="M4 10h5V5" />
             <path d="M20 10h-5V5" />
           </svg>
         ) : (
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M4 9V4h5" />
             <path d="M20 9V4h-5" />
             <path d="M4 15v5h5" />

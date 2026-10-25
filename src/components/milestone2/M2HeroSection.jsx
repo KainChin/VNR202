@@ -5,7 +5,7 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
 
-function M2HeroSection({ heroData }) {
+function M2HeroSection({ heroData, onOpenPhoto }) {
   const { anhHero } = heroData;
 
   return (
@@ -40,7 +40,13 @@ function M2HeroSection({ heroData }) {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          <div className="m2-hero-single-frame" aria-label={anhHero.nhan}>
+          <div
+            className="m2-hero-single-frame"
+            aria-label={anhHero.nhan}
+            onClick={() => onOpenPhoto && onOpenPhoto({ src: anhHero.src, nhan: anhHero.nhan, chuThich: anhHero.chuThich })}
+            style={{ cursor: onOpenPhoto ? 'zoom-in' : 'default' }}
+            title={onOpenPhoto ? 'Nhấn để phóng to toàn bộ ảnh' : undefined}
+          >
             <img
               src={anhHero.src}
               alt={anhHero.nhan}

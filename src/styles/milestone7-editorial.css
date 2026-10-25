@@ -1,0 +1,997 @@
+/* ============================================================
+   milestone7-editorial.css
+   Style đặc trưng Cột mốc 07: 02/09/1945 TUYÊN NGÔN ĐỘC LẬP
+   Phong cách: Museum Editorial cao cấp, trang nghiêm, hoàng kim lịch sử
+   Bảng màu: 
+     - Nền: #F4E9D2 (canvas chính), #EEDDBB (canvas phụ), #FFF9EE (kem sáng)
+     - Điểm nhấn: #8F2418 (đỏ nâu truyền thống), #B98B4A (vàng đồng lưu trữ)
+     - Chữ: #35271D (nâu đậm), #5A4A38 (nâu trầm), #1A120B (đen mực cổ)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. HERO PORTRAIT FRAME: KHUNG TRANH CHÂN DUNG BÁC HỒ TẠI LỄ ĐÀI
+   ------------------------------------------------------------ */
+.m7-hero-portrait-frame {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background: #251811;
+  border: 2px solid var(--m1-gold, #B98B4A);
+  box-shadow: 
+    0 12px 36px rgba(53, 39, 29, 0.28),
+    0 2px 8px rgba(185, 139, 74, 0.35);
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.m7-hero-portrait-frame:hover {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 16px 44px rgba(53, 39, 29, 0.36),
+    0 4px 16px rgba(185, 139, 74, 0.45);
+}
+
+.m7-hero-portrait-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  background: radial-gradient(circle at center, #352317 0%, #1a100a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.m7-hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 4px;
+  border: 1px solid rgba(185, 139, 74, 0.4);
+  filter: sepia(10%) contrast(106%) brightness(98%);
+  transition: transform 0.45s ease, filter 0.45s ease;
+}
+
+.m7-hero-portrait-frame:hover .m7-hero-portrait-img {
+  transform: scale(1.03);
+  filter: sepia(3%) contrast(110%) brightness(101%);
+}
+
+.m7-hero-badge-tag {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  z-index: 2;
+  background: rgba(143, 36, 24, 0.94);
+  backdrop-filter: blur(6px);
+  color: #FFF9EE;
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.85rem;
+  border-radius: 4px;
+  border: 1px solid var(--m1-gold, #B98B4A);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.m7-hero-zoom-hint {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 2;
+  background: rgba(26, 18, 11, 0.82);
+  backdrop-filter: blur(4px);
+  color: #EEDDBB;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid rgba(185, 139, 74, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.2s ease;
+}
+
+.m7-hero-portrait-frame:hover .m7-hero-zoom-hint {
+  background: rgba(143, 36, 24, 0.9);
+  color: #FFF9EE;
+  border-color: var(--m1-gold, #B98B4A);
+}
+
+/* ------------------------------------------------------------
+   2. BỐI CẢNH LỊCH SỬ TINH CHỈNH: THẺ NỀN PARCHMENT CAO CẤP
+   ------------------------------------------------------------ */
+.m7-context-card {
+  background: linear-gradient(145deg, #FAF4E6, #F5ECE0);
+  border: 1.5px solid var(--m1-border, rgba(185, 139, 74, 0.35));
+  border-radius: 8px;
+  padding: 2rem 1.85rem;
+  box-shadow: 0 4px 16px rgba(53, 39, 29, 0.06);
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.m7-context-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--m1-gold, #B98B4A);
+  box-shadow: 0 8px 24px rgba(185, 139, 74, 0.14);
+}
+
+.m7-context-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--m1-gold, #B98B4A), transparent);
+  border-radius: 8px 8px 0 0;
+}
+
+.m7-quote-banner-gold {
+  margin-top: 1.75rem;
+  background: linear-gradient(135deg, rgba(238, 221, 187, 0.95), rgba(255, 249, 238, 0.98));
+  border: 1.5px solid var(--m1-gold, #B98B4A);
+  border-left: 5px solid var(--m1-red, #8F2418);
+  border-radius: 6px;
+  padding: 1.25rem 2rem;
+  box-shadow: 0 4px 14px rgba(143, 36, 24, 0.08);
+  text-align: center;
+}
+
+.m7-quote-banner-text {
+  margin: 0;
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--m1-red, #8F2418);
+  line-height: 1.5;
+}
+
+/* ------------------------------------------------------------
+   3. SỰ KIỆN THEN CHỐT: KHUNG BẢN TUYÊN NGÔN ĐỘC LẬP & BẢNG SỰ KIỆN LỊCH SỬ
+   ------------------------------------------------------------ */
+.m7-conf-split-layout {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 2.75rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+/* Khung tranh tư liệu Bản Tuyên ngôn Độc lập (Bên trái) */
+.m7-archival-exhibit {
+  display: flex;
+  flex-direction: column;
+}
+
+.m7-archival-frame {
+  position: relative;
+  background: #251710;
+  border: 2px solid var(--m1-gold, #B98B4A);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 
+    0 12px 32px rgba(45, 26, 18, 0.28),
+    0 2px 8px rgba(185, 139, 74, 0.35);
+  cursor: zoom-in;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.m7-archival-frame:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 16px 40px rgba(45, 26, 18, 0.38),
+    0 4px 14px rgba(185, 139, 74, 0.45);
+}
+
+.m7-archival-inner {
+  background: radial-gradient(circle at center, #352317 0%, #1c110a 100%);
+  border-radius: 4px;
+  border: 1px solid rgba(185, 139, 74, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  min-height: 440px;
+}
+
+.m7-archival-doc-img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  filter: contrast(104%) brightness(99%);
+  transition: transform 0.4s ease;
+}
+
+.m7-archival-frame:hover .m7-archival-doc-img {
+  transform: scale(1.02);
+}
+
+.m7-archival-tag {
+  position: absolute;
+  top: 1.15rem;
+  left: 1.15rem;
+  z-index: 2;
+  background: rgba(143, 36, 24, 0.94);
+  backdrop-filter: blur(6px);
+  color: #FFF9EE;
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid var(--m1-gold, #B98B4A);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.m7-archival-zoom-hint {
+  position: absolute;
+  bottom: 1.15rem;
+  right: 1.15rem;
+  z-index: 2;
+  background: rgba(26, 18, 11, 0.85);
+  backdrop-filter: blur(4px);
+  color: #EEDDBB;
+  font-size: 0.72rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  border: 1px solid rgba(185, 139, 74, 0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.m7-archival-frame:hover .m7-archival-zoom-hint {
+  background: rgba(143, 36, 24, 0.92);
+  color: #FFF9EE;
+  border-color: var(--m1-gold, #B98B4A);
+}
+
+.m7-archival-caption {
+  margin-top: 1rem;
+  padding: 0 0.25rem;
+  text-align: center;
+}
+
+.m7-archival-caption-title {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--m1-red, #8F2418);
+  margin: 0 0 0.35rem;
+}
+
+.m7-archival-caption-note {
+  font-size: 0.88rem;
+  color: var(--m1-text, #35271D);
+  line-height: 1.45;
+  margin: 0 0 0.35rem;
+}
+
+.m7-archival-caption-source {
+  font-size: 0.8rem;
+  color: var(--m1-gold, #B98B4A);
+  font-style: italic;
+  display: block;
+}
+
+/* Bảng sự kiện lịch sử bên phải */
+.m7-conf-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.m7-event-head-banner {
+  background: linear-gradient(135deg, #FAF4E6 0%, #F3E5D0 100%);
+  border: 1.5px solid var(--m1-border, rgba(185, 139, 74, 0.45));
+  border-left: 5px solid var(--m1-red, #8F2418);
+  border-radius: 6px;
+  padding: 1.35rem 1.65rem;
+  box-shadow: 0 4px 14px rgba(53, 39, 29, 0.06);
+}
+
+.m7-event-head-tag {
+  display: inline-block;
+  background: var(--m1-gold, #B98B4A);
+  color: #FFF9EE;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+}
+
+.m7-event-head-title {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 800;
+  color: var(--m1-red, #8F2418);
+  margin: 0 0 0.35rem;
+  line-height: 1.3;
+}
+
+.m7-event-head-sub {
+  font-size: 0.92rem;
+  color: var(--m1-text-muted, #5A4A38);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* 3 thẻ thông số then chốt (THỜI GIAN, ĐỊA ĐIỂM, NGƯỜI ĐỌC) */
+.m7-facts-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.m7-fact-card {
+  background: linear-gradient(145deg, #FFFDF9, #FAF2E3);
+  border: 1.5px solid var(--m1-border, rgba(185, 139, 74, 0.35));
+  border-top: 3.5px solid var(--m1-gold, #B98B4A);
+  border-radius: 6px;
+  padding: 1rem 1.15rem;
+  box-shadow: 0 3px 10px rgba(53, 39, 29, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: transform 0.2s ease, border-top-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.m7-fact-card:hover {
+  transform: translateY(-2px);
+  border-top-color: var(--m1-red, #8F2418);
+  box-shadow: 0 6px 16px rgba(185, 139, 74, 0.15);
+}
+
+.m7-fact-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.m7-fact-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.m7-fact-lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m1-gold, #B98B4A);
+}
+
+.m7-fact-val {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--m1-text, #35271D);
+  line-height: 1.35;
+  margin-top: 0.15rem;
+}
+
+/* Khối mô tả lịch sử */
+.m7-narrative-quote-box {
+  background: linear-gradient(135deg, rgba(250, 244, 230, 0.9), rgba(245, 235, 218, 0.95));
+  border: 1.5px solid var(--m1-border, rgba(185, 139, 74, 0.35));
+  border-left: 4.5px solid var(--m1-gold, #B98B4A);
+  border-radius: 6px;
+  padding: 1.35rem 1.65rem;
+  box-shadow: 0 4px 14px rgba(53, 39, 29, 0.05);
+  position: relative;
+}
+
+.m7-narrative-p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--m1-text, #35271D);
+  font-style: normal;
+}
+
+.m7-narrative-p::before {
+  content: "“";
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--m1-red, #8F2418);
+  line-height: 0;
+  vertical-align: -0.2em;
+  margin-right: 0.25rem;
+}
+
+.m7-narrative-p::after {
+  content: "”";
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--m1-red, #8F2418);
+  line-height: 0;
+  vertical-align: -0.2em;
+  margin-left: 0.25rem;
+}
+
+/* Cụm nút hành động tư liệu */
+.m7-video-action-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  padding-top: 0.25rem;
+}
+
+.m7-video-action-btn {
+  background: linear-gradient(135deg, var(--m1-red, #8F2418), #6e1910);
+  color: #FFF9EE !important;
+  border: 1.5px solid var(--m1-gold, #B98B4A);
+  border-radius: 6px;
+  padding: 0.8rem 1.75rem;
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(143, 36, 24, 0.32);
+  transition: all 0.25s ease;
+}
+
+.m7-video-action-btn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #a62a1c, var(--m1-red, #8F2418));
+  box-shadow: 0 8px 22px rgba(143, 36, 24, 0.45);
+  border-color: #E5C158;
+}
+
+.m7-play-icon-badge {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--m1-gold, #B98B4A);
+  color: #1A120B;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 900;
+  padding-left: 2px;
+}
+
+.m7-video-source-note {
+  font-size: 0.84rem;
+  color: var(--m1-text-muted, #7A6A58);
+  font-style: italic;
+}
+
+/* ------------------------------------------------------------
+   4. NỘI DUNG TUYÊN NGÔN: 2 BẢN TUYÊN THƯ LỊCH SỬ TRANG TRỌNG
+   ------------------------------------------------------------ */
+.m7-decree-card {
+  background: linear-gradient(145deg, #FFFDF9, #FAF4E6);
+  border: 1.5px solid var(--m1-border, rgba(185, 139, 74, 0.35));
+  border-radius: 8px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 6px 20px rgba(53, 39, 29, 0.07);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.m7-decree-card.is-crimson {
+  border-top: 4px solid var(--m1-red, #8F2418);
+}
+
+.m7-decree-card.is-gold {
+  border-top: 4px solid var(--m1-gold, #B98B4A);
+}
+
+.m7-decree-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(53, 39, 29, 0.14);
+}
+
+.m7-decree-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 0.85rem;
+}
+
+.m7-decree-card.is-crimson .m7-decree-badge {
+  background: rgba(143, 36, 24, 0.12);
+  color: var(--m1-red, #8F2418);
+  border: 1px solid rgba(143, 36, 24, 0.3);
+}
+
+.m7-decree-card.is-gold .m7-decree-badge {
+  background: rgba(185, 139, 74, 0.14);
+  color: #7D571E;
+  border: 1px solid rgba(185, 139, 74, 0.4);
+}
+
+.m7-decree-title {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+  font-weight: 800;
+  color: var(--m1-text, #35271D);
+  line-height: 1.35;
+  margin: 0 0 0.5rem;
+}
+
+.m7-decree-subtitle {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--m1-gold, #B98B4A);
+  margin: 0 0 1.5rem;
+}
+
+.m7-decree-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.m7-decree-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--m1-text, #35271D);
+}
+
+.m7-decree-bullet {
+  font-size: 1.1rem;
+  line-height: 1.2;
+  flex-shrink: 0;
+}
+
+.m7-decree-callout {
+  margin-top: auto;
+  padding: 1.15rem 1.35rem;
+  border-radius: 6px;
+  background: var(--m1-bg-sec, #EEDDBB);
+  border: 1px solid var(--m1-border, rgba(185, 139, 74, 0.4));
+}
+
+.m7-decree-callout-p {
+  margin: 0;
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 0.96rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--m1-red, #8F2418);
+  line-height: 1.45;
+  text-align: center;
+}
+
+/* ------------------------------------------------------------
+   5. PHẦN THAY THẾ: "KHOẢNH KHẮC BA ĐÌNH & LỜI THỀ ĐỘC LẬP"
+   (Thay thế hoàn toàn phần tóm tắt 6 bước cũ)
+   ------------------------------------------------------------ */
+.m7-badinh-section {
+  position: relative;
+  margin-top: 1rem;
+}
+
+/* 5.1 Khối đối đáp lịch sử thiêng liêng */
+.m7-historic-dialogue-card {
+  background: linear-gradient(145deg, #2D1A12, #3E2218);
+  border: 2px solid var(--m1-gold, #B98B4A);
+  border-radius: 10px;
+  padding: 2.5rem 2.25rem;
+  color: #FFF9EE;
+  box-shadow: 
+    0 12px 32px rgba(45, 26, 18, 0.35),
+    inset 0 0 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.m7-historic-dialogue-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(229, 193, 88, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.m7-dialogue-eyebrow {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--m1-gold, #B98B4A);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.m7-dialogue-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.m7-dialogue-side {
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(185, 139, 74, 0.3);
+}
+
+.m7-dialogue-side.is-uncle-ho {
+  border-left: 4px solid #E5C158;
+}
+
+.m7-dialogue-side.is-people {
+  border-left: 4px solid var(--m1-red, #8F2418);
+  background: rgba(143, 36, 24, 0.25);
+}
+
+.m7-dialogue-speaker {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--m1-gold, #B98B4A);
+  margin-bottom: 0.5rem;
+}
+
+.m7-dialogue-quote {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 800;
+  line-height: 1.35;
+  color: #FFF9EE;
+  margin: 0;
+}
+
+.m7-dialogue-side.is-uncle-ho .m7-dialogue-quote {
+  color: #FFE5A3;
+}
+
+.m7-dialogue-side.is-people .m7-dialogue-quote {
+  color: #FFFFFF;
+  text-shadow: 0 0 12px rgba(229, 193, 88, 0.4);
+}
+
+.m7-dialogue-center-wave {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--m1-gold, #B98B4A);
+  font-size: 1.8rem;
+}
+
+.m7-dialogue-meaning-box {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  border-top: 1px dashed rgba(185, 139, 74, 0.4);
+}
+
+.m7-dialogue-meaning-p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #EEDDBB;
+  font-style: italic;
+  text-align: center;
+}
+
+/* 5.2 Ba Tầm vóc Lịch sử vĩ đại của Tuyên ngôn */
+.m7-pillars-title-bar {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.m7-pillars-title-bar h3 {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--m1-text, #35271D);
+  margin: 0 0 0.35rem;
+}
+
+.m7-pillars-title-bar p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--m1-gold, #B98B4A);
+  font-weight: 600;
+}
+
+.m7-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.m7-pillar-card {
+  background: linear-gradient(145deg, #FAF4E6, #F2E3CF);
+  border: 1.5px solid var(--m1-border, rgba(185, 139, 74, 0.4));
+  border-radius: 8px;
+  padding: 1.85rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 14px rgba(53, 39, 29, 0.08);
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.m7-pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--m1-gold, #B98B4A);
+  box-shadow: 0 8px 24px rgba(185, 139, 74, 0.2);
+}
+
+.m7-pillar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.m7-pillar-roman {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--m1-red, #8F2418);
+  line-height: 1;
+}
+
+.m7-pillar-icon {
+  font-size: 1.5rem;
+}
+
+.m7-pillar-title {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--m1-text, #35271D);
+  margin: 0 0 0.85rem;
+  line-height: 1.35;
+}
+
+.m7-pillar-desc {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--m1-text-muted, #5A4A38);
+}
+
+/* 5.3 Lời thề Độc lập thiêng liêng (The Immortal Oath) */
+.m7-oath-scroll-box {
+  background: linear-gradient(135deg, #FFFDF8 0%, #FAF0DF 100%);
+  border: 2px solid var(--m1-gold, #B98B4A);
+  border-radius: 8px;
+  padding: 2.5rem 2.25rem;
+  box-shadow: 
+    0 8px 28px rgba(53, 39, 29, 0.12),
+    inset 0 0 0 1px rgba(185, 139, 74, 0.3);
+  position: relative;
+  text-align: center;
+}
+
+.m7-oath-scroll-box::before,
+.m7-oath-scroll-box::after {
+  content: "✦";
+  position: absolute;
+  color: var(--m1-gold, #B98B4A);
+  font-size: 1.1rem;
+}
+
+.m7-oath-scroll-box::before {
+  top: 12px;
+  left: 14px;
+}
+
+.m7-oath-scroll-box::after {
+  bottom: 12px;
+  right: 14px;
+}
+
+.m7-oath-header {
+  margin-bottom: 1.25rem;
+}
+
+.m7-oath-title {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--m1-red, #8F2418);
+  margin: 0 0 0.25rem;
+}
+
+.m7-oath-quote {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-weight: 800;
+  color: var(--m1-text, #35271D);
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto 1.25rem;
+}
+
+.m7-oath-sign {
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--m1-gold, #B98B4A);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------
+   6. DÒNG KẾT TOÀN BỘ TIẾN TRÌNH CHIẾN LƯỢC (GOLD RIBBON)
+   ------------------------------------------------------------ */
+.m7-grand-ribbon-bar {
+  background: linear-gradient(135deg, #2D1A12, #3E2218);
+  border: 2px solid var(--m1-gold, #B98B4A);
+  border-radius: 8px;
+  padding: 1.75rem 2rem;
+  margin: 2.5rem auto 1.5rem;
+  max-width: 1040px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(45, 26, 18, 0.25);
+}
+
+.m7-grand-ribbon-tag {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #E5C158;
+  margin-bottom: 1.1rem;
+}
+
+.m7-grand-ribbon-nodes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.m7-ribbon-node {
+  font-family: var(--m1-font-serif, 'Playfair Display', Georgia, serif);
+  font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+  font-weight: 800;
+  color: #FFF9EE;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.m7-ribbon-node.is-final {
+  color: #FFD700;
+  background: rgba(143, 36, 24, 0.6);
+  padding: 0.25rem 0.85rem;
+  border-radius: 4px;
+  border: 1px solid #E5C158;
+  box-shadow: 0 0 12px rgba(229, 193, 88, 0.35);
+}
+
+.m7-ribbon-arrow {
+  color: var(--m1-gold, #B98B4A);
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+/* ------------------------------------------------------------
+   7. RESPONSIVE BREAKPOINTS (TABLET & MOBILE)
+   ------------------------------------------------------------ */
+@media (max-width: 992px) {
+  .m7-conf-split-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .m7-archival-frame {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  .m7-dialogue-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .m7-dialogue-center-wave {
+    transform: rotate(90deg);
+    margin: -0.5rem 0;
+  }
+
+  .m7-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .m7-hero-portrait-frame {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .m7-facts-grid-3 {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .m7-event-head-banner {
+    padding: 1.1rem 1.15rem;
+  }
+
+  .m7-narrative-quote-box {
+    padding: 1.1rem 1.15rem;
+  }
+
+  .m7-historic-dialogue-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .m7-dialogue-side {
+    padding: 1rem 1.15rem;
+  }
+
+  .m7-dialogue-quote {
+    font-size: 1.15rem;
+  }
+
+  .m7-oath-scroll-box {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .m7-oath-quote {
+    font-size: 1.08rem;
+  }
+
+  .m7-grand-ribbon-bar {
+    padding: 1.25rem 1rem;
+  }
+
+  .m7-ribbon-node {
+    font-size: 0.95rem;
+  }
+}

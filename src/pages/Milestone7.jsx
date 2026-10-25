@@ -1,47 +1,50 @@
-// src/pages/Milestone1.jsx
-// Trang Cột mốc 01 – 11/1939: Chuyển hướng chiến lược
+// src/pages/Milestone7.jsx
+// Trang Cột mốc 07 – 2/9/1945: TUYÊN NGÔN ĐỘC LẬP
 // Phong cách: Historical Editorial + Museum Website cao cấp
-// Chuẩn thiết kế: Tối giản, thanh lịch, nhiều khoảng trắng, tương tác trình chiếu mượt mà
+// Chuẩn thiết kế: Tối giản, trang trọng, giàu tính học thuật, tương tác mượt mà
 
-import { useState, useEffect, useRef, useCallback } from 'react';
-import data from '../data/milestone1.js';
+import { useState, useEffect, useCallback } from 'react';
+import data from '../data/milestone7.js';
 
-import M1Header from '../components/milestone1/M1Header.jsx';
-import HeroSection from '../components/milestone1/HeroSection.jsx';
-import ContextSection from '../components/milestone1/ContextSection.jsx';
-import ConferenceSection from '../components/milestone1/ConferenceSection.jsx';
-import LogicFlowSection from '../components/milestone1/LogicFlowSection.jsx';
-import StrategicShiftSection from '../components/milestone1/StrategicShiftSection.jsx';
-import MeaningSection from '../components/milestone1/MeaningSection.jsx';
+import M7Header from '../components/milestone7/M7Header.jsx';
+import M7HeroSection from '../components/milestone7/M7HeroSection.jsx';
+import M7ContextSection from '../components/milestone7/M7ContextSection.jsx';
+import M7ConferenceSection from '../components/milestone7/M7ConferenceSection.jsx';
+import M7StrategicShiftSection from '../components/milestone7/M7StrategicShiftSection.jsx';
+import M7BaDinhMomentSection from '../components/milestone7/M7BaDinhMomentSection.jsx';
+import M7MeaningSection from '../components/milestone7/M7MeaningSection.jsx';
 import VideoModal from '../components/milestone1/VideoModal.jsx';
-import GemButton from '../components/GemButton.jsx';
+import ImageLightbox from '../components/milestone1/ImageLightbox.jsx';
+import AiAppendixModal from '../components/AiAppendixModal.jsx';
 
 import '../styles/milestone1-editorial.css';
+import '../styles/milestone4-editorial.css';
+import '../styles/milestone5-editorial.css';
+import '../styles/milestone7-editorial.css';
 
-// Danh sách thứ tự các section phục vụ điều hướng bằng phím mũi tên
 const ORDERED_SECTIONS = [
   'hero',
   'boi-canh',
   'hoi-nghi',
-  'logic-chuyen-huong',
-  'dieu-chinh',
+  'tuyen-bo',
+  'khoanh-khac-ba-dinh',
   'y-nghia',
 ];
 
-function Milestone1() {
+function Milestone7() {
   const [activeSection, setActiveSection] = useState('hero');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
-
-  const videoTriggerRef = useRef(null);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   // Cuộn mượt lên đầu trang khi mở
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  // 1. Tính toán phần trăm thanh tiến trình cuộn mỏng ở đầu trang
+  // 1. Tính toán thanh tiến trình cuộn mỏng ở đầu trang
   useEffect(() => {
     const handleScroll = () => {
       const el = document.documentElement;
@@ -75,7 +78,7 @@ function Milestone1() {
     }
   }, []);
 
-  // 3. Scroll-spy theo dõi section đang hiển thị để highlight trên Strategy Rail
+  // 3. Scroll-spy theo dõi section đang hiển thị
   useEffect(() => {
     const observers = [];
     const options = {
@@ -119,11 +122,10 @@ function Milestone1() {
     });
   }, []);
 
-  // 5. Chế độ trình chiếu: Bấm phím ← / → hoặc PageUp / PageDown để chuyển nhanh giữa các section
+  // 5. Điều hướng bằng phím mũi tên: Bấm ← / → hoặc PageUp / PageDown để chuyển nhanh giữa các section
   useEffect(() => {
     const handleKeyNav = (e) => {
-      // Bỏ qua nếu đang mở video modal hoặc đang focus vào input
-      if (isVideoModalOpen) return;
+      if (isVideoModalOpen || isAiModalOpen || selectedPhoto) return;
       const tag = document.activeElement?.tagName?.toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
 
@@ -142,54 +144,78 @@ function Milestone1() {
 
     window.addEventListener('keydown', handleKeyNav);
     return () => window.removeEventListener('keydown', handleKeyNav);
-  }, [activeSection, isVideoModalOpen, scrollToSection]);
+  }, [activeSection, isVideoModalOpen, isAiModalOpen, selectedPhoto, scrollToSection]);
 
   return (
     <div className={`m1-editorial-page ${isFullScreen ? 'is-fullscreen' : ''}`}>
-      {/* HEADER CỐ ĐỊNH: Thanh tiến trình mỏng, nút toàn màn hình & điều hướng cột mốc */}
-      <M1Header
+      {/* HEADER CỐ ĐỊNH CHUẨN MUSEUM EDITORIAL */}
+      <M7Header
         scrollProgress={scrollProgress}
         isFullScreen={isFullScreen}
         onToggleFullScreen={toggleFullScreen}
+        onOpenAiModal={() => setIsAiModalOpen(true)}
         data={data}
       />
 
       {/* NỘI DUNG CHÍNH (EDITORIAL SHELL) */}
       <main className="m1-editorial-shell">
-        {/* 1. HERO SECTION & COMPOSITION DUY NHẤT */}
-        <HeroSection heroData={data.hero} />
+        {/* 1. HERO SECTION */}
+        <M7HeroSection
+          heroData={data.hero}
+          onOpenPhoto={setSelectedPhoto}
+        />
 
-        {/* 2. BỐI CẢNH LỊCH SỬ (TIMELINE NGANG 3 MỐC) */}
-        <ContextSection boiCanhData={data.boiCanh} />
+        {/* 2. "VÌ SAO CÓ TUYÊN NGÔN ĐỘC LẬP?" */}
+        <M7ContextSection
+          contextData={data.viSaoCoTuyenNgon}
+        />
 
-        {/* 3. HỘI NGHỊ TRUNG ƯƠNG 6 (BỐ CỤC 2 CỘT MỚI) */}
-        <ConferenceSection confData={data.hoiNghiTW6} />
+        {/* 3. "MỐC THEN CHỐT: BA ĐÌNH, 2/9/1945" */}
+        <M7ConferenceSection
+          confData={data.mocThenChot}
+          onOpenPhoto={setSelectedPhoto}
+          onOpenVideo={() => setIsVideoModalOpen(true)}
+        />
 
-        {/* 4. FLOW "LOGIC CHUYỂN HƯỚNG" (6 BƯỚC KHÔNG DÙNG CARD) */}
-        <LogicFlowSection logicData={data.logicChuyenHuong} />
+        {/* 4. "TUYÊN NGÔN ĐỘC LẬP TUYÊN BỐ ĐIỀU GÌ?" (2 KHỐI LỚN) */}
+        <M7StrategicShiftSection
+          shiftData={data.noiDungTuyenNgon}
+        />
 
-        {/* 5. ĐẢNG ĐIỀU CHỈNH NHƯ THẾ NÀO? (2 KHỐI LỚN: NHIỆM VỤ / HÌNH THỨC) */}
-        <StrategicShiftSection shiftData={data.dieuChinhChienLuoc} />
+        {/* 5. "KHOẢNH KHẮC BA ĐÌNH & LỜI THỀ ĐỘC LẬP" (THAY THẾ TOÀN BỘ TÓM TẮT 6 BƯỚC CŨ) */}
+        <M7BaDinhMomentSection
+          data={data.khoanhKhacBaDinh}
+        />
 
-        {/* 6. Ý NGHĨA & TIẾN TRÌNH 1939 – 1945 + 8. NGUỒN TƯ LIỆU */}
-        <MeaningSection
-          meaningData={data.yNghiaTienTrinh}
-          refData={data.nguonTuLieu}
+        {/* 6. "Ý NGHĨA" + 4 BÀI HỌC + DÒNG KẾT TOÀN TRÌNH */}
+        <M7MeaningSection
+          meaningData={data.yNghiaTongKet}
+          refData={data.yNghiaTongKet.nguonTuLieu}
         />
       </main>
 
-      {/* Nút trợ lý Gem AI */}
-      <GemButton milestoneId={data.id} />
+      {/* LIGHTBOX PHÓNG TO ẢNH TƯ LIỆU */}
+      <ImageLightbox
+        photo={selectedPhoto}
+        onClose={() => setSelectedPhoto(null)}
+      />
 
-      {/* 7. MODAL VIDEO YOUTUBE SHORTS (DỰ PHÒNG NẾU CẦN) */}
-      <VideoModal
-        isOpen={isVideoModalOpen}
-        onClose={() => setIsVideoModalOpen(false)}
-        videoData={data.hoiNghiTW6.videoShorts}
-        triggerRef={videoTriggerRef}
+      {/* MODAL VIDEO TƯ LIỆU */}
+      {data.mocThenChot?.videoData?.youtubeId && (
+        <VideoModal
+          isOpen={isVideoModalOpen}
+          onClose={() => setIsVideoModalOpen(false)}
+          videoData={data.mocThenChot.videoData}
+        />
+      )}
+
+      {/* MODAL PHỤ LỤC AI */}
+      <AiAppendixModal
+        isOpen={isAiModalOpen}
+        onClose={() => setIsAiModalOpen(false)}
       />
     </div>
   );
 }
 
-export default Milestone1;
+export default Milestone7;

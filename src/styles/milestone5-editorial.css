@@ -1,0 +1,11 @@
+/* ============================================================
+   milestone5-editorial.css
+   Style bổ trợ đặc trưng cho Cột mốc 05: 3–8/1945 CAO TRÀO KHÁNG NHẬT
+   Tuân thủ nghiêm ngặt hệ màu, typography và tinh thần Museum Editorial
+   ============================================================ */
+
+/* Kế thừa và đồng bộ hóa các lớp giao diện mốc lịch sử */
+.m5-active-indicator {
+  background: var(--m1-red, #8F2418);
+  color: #fff;
+}

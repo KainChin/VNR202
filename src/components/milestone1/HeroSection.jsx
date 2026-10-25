@@ -4,7 +4,7 @@
 import { memo } from 'react';
 import { motion } from 'framer-motion';
 
-function HeroSection({ heroData }) {
+function HeroSection({ heroData, onOpenPhoto }) {
   const { composition } = heroData;
 
   return (
@@ -44,7 +44,12 @@ function HeroSection({ heroData }) {
             aria-label={composition.tieuDeAnh}
           >
             {/* Lớp 1: Thế chiến II bùng nổ */}
-            <div className="comp-layer layer-ww2">
+            <div
+              className="comp-layer layer-ww2"
+              onClick={() => onOpenPhoto && onOpenPhoto(composition.danhSachAnh[0])}
+              style={{ cursor: onOpenPhoto ? 'zoom-in' : 'default' }}
+              title={onOpenPhoto ? 'Nhấn để phóng to toàn bộ ảnh' : undefined}
+            >
               <img
                 src={composition.danhSachAnh[0].src}
                 alt={composition.danhSachAnh[0].nhan}
@@ -54,7 +59,12 @@ function HeroSection({ heroData }) {
             </div>
 
             {/* Lớp 2: Đông Dương thời Pháp khủng bố */}
-            <div className="comp-layer layer-phap">
+            <div
+              className="comp-layer layer-phap"
+              onClick={() => onOpenPhoto && onOpenPhoto(composition.danhSachAnh[1])}
+              style={{ cursor: onOpenPhoto ? 'zoom-in' : 'default' }}
+              title={onOpenPhoto ? 'Nhấn để phóng to toàn bộ ảnh' : undefined}
+            >
               <img
                 src={composition.danhSachAnh[1].src}
                 alt={composition.danhSachAnh[1].nhan}
@@ -64,7 +74,12 @@ function HeroSection({ heroData }) {
             </div>
 
             {/* Lớp 3: Hội nghị Trung ương 6 tại Bà Điểm */}
-            <div className="comp-layer layer-tw6">
+            <div
+              className="comp-layer layer-tw6"
+              onClick={() => onOpenPhoto && onOpenPhoto(composition.danhSachAnh[2])}
+              style={{ cursor: onOpenPhoto ? 'zoom-in' : 'default' }}
+              title={onOpenPhoto ? 'Nhấn để phóng to toàn bộ ảnh' : undefined}
+            >
               <img
                 src={composition.danhSachAnh[2].src}
                 alt={composition.danhSachAnh[2].nhan}

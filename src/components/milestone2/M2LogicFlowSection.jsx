@@ -4,6 +4,8 @@
 import { memo } from 'react';
 
 function M2LogicFlowSection({ logicData }) {
+  if (!logicData) return null;
+
   return (
     <section id="logic-chien-luoc" className="m1-section" aria-labelledby="heading-logic-m2">
       <div>

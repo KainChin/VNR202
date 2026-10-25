@@ -5,14 +5,15 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import milestones from '../data/index.js';
 
-// Màu của từng cột mốc để tô chấm active
+// Màu của từng cột mốc để tô chấm active (7 cột mốc)
 const MAU_COT_MOC = {
-  1: '#3A3F47',
-  2: '#1F4E79',
-  3: '#A8541A',
+  1: '#8B1A10',
+  2: '#8F2418',
+  3: '#1F4E79',
   4: '#D9501E',
   5: '#A31621',
-  6: '#C98F10',
+  6: '#A8541A',
+  7: '#C98F10',
 };
 
 /**
@@ -49,47 +50,49 @@ function MilestoneNav({ currentId, showButtons = true }) {
               )}
 
               {/* Chấm số */}
-              <Link
-                to={`/cot-moc/${m.id}`}
-                className={`milestone-progress__dot${isActive ? ' milestone-progress__dot--active' : ''}`}
-                style={
-                  isActive
-                    ? { background: mauCham, borderColor: mauCham }
-                    : { color: 'var(--chu-nhat)' }
-                }
-                title={`Cột mốc ${m.id}: ${m.tieuDe} ${m.id > 2 ? '(Sắp có)' : ''}`}
-                aria-label={`Cột mốc ${m.id}: ${m.tieuDe} ${m.id > 2 ? '(Sắp có)' : ''}`}
-                aria-current={isActive ? 'step' : undefined}
-              >
-                {m.id}
-              </Link>
+              {isActive ? (
+                <span
+                  className="milestone-progress__dot milestone-progress__dot--active"
+                  style={{ background: mauCham, borderColor: mauCham }}
+                  title={`Cột mốc 0${m.id}: ${m.tieuDe} (Đang xem)`}
+                  aria-label={`Cột mốc 0${m.id}: ${m.tieuDe} (Đang xem)`}
+                  aria-current="step"
+                >
+                  {m.id}
+                </span>
+              ) : (
+                <span
+                  className="milestone-progress__dot is-locked"
+                  style={{
+                    color: 'var(--chu-nhat)',
+                    cursor: 'not-allowed',
+                    opacity: 0.65,
+                    userSelect: 'none',
+                  }}
+                  title={`Cột mốc 0${m.id}: ${m.tieuDe} (Đã khóa – Về poster để chọn mốc)`}
+                  aria-label={`Cột mốc 0${m.id}: ${m.tieuDe} (Đã khóa – Về poster để chọn mốc)`}
+                  aria-disabled="true"
+                >
+                  {m.id}
+                </span>
+              )}
             </div>
           );
         })}
       </nav>
 
-      {/* Nút điều hướng cuối trang (chỉ hiện khi showButtons = true) */}
+      {/* Nút điều hướng cuối trang: Quay về poster hoặc Lên đầu trang */}
       {showButtons && (
-        <nav className="milestone-nav" aria-label="Điều hướng cột mốc">
-          {/* Nút Trước – ẩn nếu là cột mốc đầu */}
-          {id > 1 ? (
-            <Link
-              to={`/cot-moc/${id - 1}`}
-              className="nut-giay"
-              aria-label={`Cột mốc trước: Cột mốc ${id - 1}`}
-            >
-              ← Cột mốc trước
-            </Link>
-          ) : (
-            // Giữ layout cân bằng khi không có nút trước
-            <span style={{ minWidth: '120px' }} />
-          )}
-
+        <nav
+          className="milestone-nav"
+          aria-label="Điều hướng cột mốc"
+          style={{ justifyContent: 'center', gap: '1.25rem' }}
+        >
           {/* Nút Về poster */}
           <Link
             to="/"
             className="nut-giay"
-            aria-label="Quay về trang chủ poster"
+            aria-label="Quay về trang chủ poster để chọn cột mốc khác"
             style={{ fontWeight: 700, borderColor: mauHienTai, color: mauHienTai }}
           >
             🗺 Về poster
@@ -106,19 +109,6 @@ function MilestoneNav({ currentId, showButtons = true }) {
           >
             ↑ Lên đầu trang
           </button>
-
-          {/* Nút Sau – ẩn nếu là cột mốc cuối */}
-          {id < 6 ? (
-            <Link
-              to={`/cot-moc/${id + 1}`}
-              className="nut-giay"
-              aria-label={`Cột mốc sau: Cột mốc ${id + 1}`}
-            >
-              Cột mốc sau →
-            </Link>
-          ) : (
-            <span style={{ minWidth: '120px' }} />
-          )}
         </nav>
       )}
     </div>

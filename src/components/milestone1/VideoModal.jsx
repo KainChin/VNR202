@@ -1,7 +1,9 @@
 // src/components/milestone1/VideoModal.jsx
-// Modal video YouTube Shorts với Focus Trap, dừng video khi đóng, trả focus về nút kích hoạt
+// Modal video YouTube Shorts chuẩn Museum Editorial
+// Tính năng: Tỉ lệ dọc 9:16, 2 cột trên desktop / 1 cột mobile, Focus Trap, dừng hẳn video khi đóng, trả focus về nút kích hoạt
 
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 
 function VideoModal({ isOpen, onClose, videoData, triggerRef }) {
@@ -72,11 +74,21 @@ function VideoModal({ isOpen, onClose, videoData, triggerRef }) {
     };
   }, [isOpen, onClose, triggerRef]);
 
-  if (!isOpen) return null;
+  if (!isOpen || !videoData || !videoData.youtubeId) return null;
+  if (typeof document === 'undefined') return null;
 
   const embedUrl = `https://www.youtube.com/embed/${videoData.youtubeId}?autoplay=1&rel=0`;
+  const videoTitle =
+    videoData.videoTitle ||
+    videoData.tieuDeModal ||
+    'Kỉ Niệm Ngày Đội Việt Nam Tuyên Truyền Giải Phóng Quân Được Thành Lập (22/12/1944)';
+  const tagLabel = videoData.nhanTag || 'TƯ LIỆU LỊCH SỬ';
+  const caption = videoData.chuThich || '';
+  const sourceName = videoData.tenNguon || '';
+  const youtubeUrl =
+    videoData.url || `https://www.youtube.com/shorts/${videoData.youtubeId}`;
 
-  return (
+  return createPortal(
     <div
       className="museum-modal-backdrop"
       onClick={onClose}
@@ -84,18 +96,22 @@ function VideoModal({ isOpen, onClose, videoData, triggerRef }) {
     >
       <motion.div
         ref={dialogRef}
-        className="museum-video-dialog"
-        initial={{ scale: 0.92, opacity: 0, y: 15 }}
-        animate={{ scale: 1, opacity: 1, y: 0 }}
-        exit={{ scale: 0.92, opacity: 0, y: 15 }}
-        transition={{ duration: 0.22 }}
+        className="museum-video-dialog museum-video-dialog--shorts-split"
+        initial={{ scale: 0.94, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.94, opacity: 0 }}
+        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
-        aria-label={videoData.tieuDeModal}
+        aria-label={videoTitle}
       >
+        {/* Header modal: Tag tư liệu & Nút Đóng */}
         <div className="museum-modal-header">
-          <h3 className="museum-modal-title">{videoData.tieuDeModal}</h3>
+          <div className="museum-modal-tag-badge">
+            <span style={{ color: 'var(--m1-gold)', marginRight: '0.4rem' }}>▶</span>
+            <span>PHIM TƯ LIỆU LỊCH SỬ</span>
+          </div>
           <button
             ref={closeBtnRef}
             type="button"
@@ -108,30 +124,54 @@ function VideoModal({ isOpen, onClose, videoData, triggerRef }) {
           </button>
         </div>
 
-        {/* Khung tỷ lệ 9:16 Shorts chuẩn bảo tàng, không có thanh cuộn */}
-        <div className="museum-video-frame">
-          <iframe
-            src={embedUrl}
-            title={videoData.tieuDeModal}
-            scrolling="no"
-            style={{ border: 'none', overflow: 'hidden' }}
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
-            allowFullScreen
-          />
-        </div>
+        {/* Bố cục 2 cột trên Desktop (Video dọc trái, Chú thích phải); 1 cột trên Mobile */}
+        <div className="museum-shorts-split-body">
+          {/* CỘT TRÁI: Khung video dọc tỷ lệ 9:16 Shorts (tối đa 380px, cao 78vh) */}
+          <div className="museum-shorts-video-col">
+            <div className="museum-video-frame museum-video-frame--shorts">
+              <iframe
+                src={embedUrl}
+                title={videoTitle}
+                scrolling="no"
+                style={{ border: 'none', overflow: 'hidden' }}
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
+                allowFullScreen
+              />
+            </div>
+          </div>
 
-        <div className="museum-video-footer">
-          <a
-            href={videoData.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="museum-video-fallback-link"
-          >
-            Mở trực tiếp trên YouTube Shorts ↗
-          </a>
+          {/* CỘT PHẢI: Tiêu đề, Chú thích ngắn, Nguồn & Nút mở trực tiếp YouTube */}
+          <div className="museum-shorts-info-col">
+            <div className="museum-shorts-info-top">
+              <span className="museum-shorts-eyebrow">{tagLabel}</span>
+              <h3 className="museum-shorts-title">{videoTitle}</h3>
+              {caption && (
+                <p className="museum-shorts-caption">{caption}</p>
+              )}
+            </div>
+
+            <div className="museum-shorts-footer-meta">
+              {sourceName ? (
+                <span className="museum-shorts-source">
+                  Nguồn: <strong>{sourceName}</strong>
+                </span>
+              ) : <span />}
+              <a
+                href={youtubeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="museum-shorts-yt-link"
+                title="Mở video trực tiếp trên YouTube (tab mới)"
+              >
+                <span>Mở trên YouTube</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
         </div>
       </motion.div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

@@ -71,7 +71,7 @@ function Moc1VideoModal({ isOpen, onClose }) {
   const handleGoToMoc2 = () => {
     onClose();
     // Chuyển sang Cột mốc 2 trên poster (11/1939: Mở đầu chuyển hướng chiến lược)
-    navigate('/cot-moc/1');
+    navigate('/cot-moc/2');
   };
 
   return (

@@ -1,13 +1,13 @@
 // src/data/milestone2.js
-// Dữ liệu Cột mốc 02: Tháng 05/1941 – Hoàn chỉnh chuyển hướng chiến lược
-// Nội dung cô đọng, súc tích chuẩn bảo tàng, tích hợp đúng 5 ảnh thật từ người dùng
+// Dữ liệu Cột mốc 02: Tháng 11/1939 – Mở đầu chuyển hướng chiến lược
+// Nội dung cô đọng, súc tích, chuẩn phong cách trưng bày bảo tàng (Hội nghị TW6, Bà Điểm)
 
 export default {
   id: 2,
   slug: '2',
-  thoiGian: '05/1941',
-  tieuDe: 'HOÀN CHỈNH CHUYỂN HƯỚNG CHIẾN LƯỢC',
-  phuDe: 'Nguyễn Ái Quốc về nước – Thành lập Mặt trận Việt Minh – Chuẩn bị khởi nghĩa',
+  thoiGian: '11/1939',
+  tieuDe: 'MỞ ĐẦU CHUYỂN HƯỚNG CHIẾN LƯỢC',
+  phuDe: 'Chiến tranh bùng nổ – Cách mạng cần một hướng đi mới.',
   mau: '#8F2418',
 
   // Chuỗi chiến lược tổng thể (Strategy Rail)
@@ -15,38 +15,54 @@ export default {
     {
       id: 1,
       so: '01',
-      ten: 'Chuyển hướng đúng',
-      moc: '11/1939',
+      ten: 'Đảng ra đời',
+      moc: '1930',
       isActive: false,
-      moTa: 'Hội nghị TW6: Mở đầu chuyển hướng',
+      moTa: 'Hội nghị thành lập Đảng tại Hương Cảng',
     },
     {
       id: 2,
       so: '02',
-      ten: 'Hoàn chỉnh đường lối',
-      moc: '05/1941',
+      ten: 'Chuyển hướng đúng',
+      moc: '11/1939',
       isActive: true,
-      moTa: 'Hội nghị TW8: Thành lập Việt Minh',
+      moTa: 'Hội nghị TW6: Đặt giải phóng dân tộc lên hàng đầu',
     },
     {
       id: 3,
       so: '03',
-      ten: 'Chuẩn bị lực lượng',
-      moc: '1941–1944',
+      ten: 'Hoàn chỉnh đường lối',
+      moc: '05/1941',
       isActive: false,
-      moTa: 'Xây dựng căn cứ & vũ trang',
+      moTa: 'Hội nghị TW8: Thành lập Việt Minh',
     },
     {
       id: 4,
       so: '04',
-      ten: 'Nhận diện & Chớp thời cơ',
-      moc: '3–8/1945',
+      ten: 'Chuẩn bị lực lượng',
+      moc: '1941–1944',
       isActive: false,
-      moTa: 'Kháng Nhật & Tổng khởi nghĩa',
+      moTa: 'Thành lập Việt Minh, xây dựng căn cứ và lực lượng vũ trang',
     },
     {
       id: 5,
       so: '05',
+      ten: 'Cao trào kháng Nhật',
+      moc: '3–8/1945',
+      isActive: false,
+      moTa: 'Kháng Nhật cứu nước',
+    },
+    {
+      id: 6,
+      so: '06',
+      ten: 'Chớp thời cơ',
+      moc: '8/1945',
+      isActive: false,
+      moTa: 'Tổng khởi nghĩa giành chính quyền',
+    },
+    {
+      id: 7,
+      so: '07',
       ten: 'Thắng lợi',
       moc: '2/9/1945',
       isActive: false,
@@ -54,198 +70,254 @@ export default {
     },
   ],
 
-  // 1. HERO (ẢNH 1: BÁC HỒ TẠI PÁC BÓ)
+  // 1. HERO COMPOSITION
   hero: {
     cotMoc: 'CỘT MỐC 02',
-    namThang: '05 / 1941',
-    tieuDe: 'HOÀN CHỈNH CHUYỂN HƯỚNG CHIẾN LƯỢC',
-    cauPhu: 'Độc lập dân tộc là nhiệm vụ trước hết và cấp bách nhất.',
+    namThang: '11 / 1939',
+    tieuDe: 'MỞ ĐẦU CHUYỂN HƯỚNG CHIẾN LƯỢC',
+    cauPhu: 'Chiến tranh bùng nổ – Cách mạng cần một hướng đi mới.',
     thongDiepCotLoi:
-      'Tháng 5/1941, lãnh tụ Nguyễn Ái Quốc chủ trì Hội nghị Trung ương 8 tại Pác Bó (Cao Bằng), hoàn chỉnh trọn vẹn đường lối giải phóng dân tộc và thành lập Mặt trận Việt Minh.',
-    anhHero: {
-      src: '/images/m2-bac-ho-pac-bo.png',
-      nhan: 'Lãnh tụ Nguyễn Ái Quốc tại Pác Bó',
-      thoiGian: 'Mùa xuân 1941',
-      chuThich: 'Nguyễn Ái Quốc trở về nước sau 30 năm bôn ba, trực tiếp lãnh đạo cách mạng tại căn cứ Pác Bó (Cao Bằng).',
-      nguon: 'Lưu trữ tư liệu lịch sử Pác Bó',
+      'Quyết định lịch sử đặt giải phóng dân tộc lên hàng đầu, mở đường cho thắng lợi Cách mạng Tháng Tám 1945.',
+    composition: {
+      tieuDeAnh: 'Tư liệu lịch sử mùa thu 1939',
+      chuThich:
+        'Tư liệu mùa thu 1939: Chiến tranh thế giới II bùng nổ, Pháp đàn áp và Hội nghị TW6 tại Bà Điểm (Hóc Môn).',
+      nguon: 'Lưu trữ Bảo tàng Lịch sử Quốc gia & Viện Lịch sử Đảng',
+      danhSachAnh: [
+        {
+          src: '/images/m1-ww2.png',
+          nhan: 'Chiến tranh thế giới II',
+          thoiGian: '01/09/1939',
+          chuThich: 'Phát xít Đức tấn công Ba Lan, Thế chiến II bùng nổ',
+        },
+        {
+          src: '/images/m1-phap-dan-ap.png',
+          nhan: 'Đông Dương thời chiến',
+          thoiGian: 'Mùa thu 1939',
+          chuThich: 'Thực dân Pháp tăng cường đàn áp, khủng bố phong trào cách mạng',
+        },
+        {
+          src: '/images/m1-hoi-nghi-tw6.png',
+          nhan: 'Hội nghị Trung ương 6',
+          thoiGian: '06–08/11/1939',
+          chuThich: 'Hội nghị diễn ra bí mật tại Bà Điểm, Hóc Môn, Gia Định',
+        },
+      ],
     },
   },
 
-  // 2. BỐI CẢNH (RÚT GỌN 2 Ý CHÍNH - KHÔNG DÙNG ẢNH ĐỂ TIẾT KIỆM)
+  // 2. BỐI CẢNH LỊCH SỬ (3 mốc ngắn gọn)
   boiCanh: {
-    tieuDe: 'BỐI CẢNH ĐẦU NĂM 1941',
-    phuDe: 'Nhật vào Đông Dương, vận mệnh dân tộc đứng trước yêu cầu giải phóng cấp bách.',
+    tieuDe: 'BỐI CẢNH LỊCH SỬ',
+    phuDe: 'Ba biến động dồn dập mùa thu 1939 làm thay đổi cục diện cách mạng.',
     cacMoc: [
       {
         so: '01',
-        thoiDiem: 'Đầu năm 1941',
-        tieuDe: 'Nhật vào Đông Dương',
-        moTa: 'Chiến tranh thế giới II lan rộng, Nhật vào Đông Dương cấu kết với Pháp. Nhân dân chịu cảnh áp bức của cả Pháp và Nhật; yêu cầu giải phóng dân tộc trở nên cấp bách nhất.',
+        thoiDiem: '01/09/1939',
+        tieuDe: 'Chiến tranh thế giới II bùng nổ',
+        moTa: 'Chủ nghĩa phát xít tấn công châu Âu. Chiến tranh lan rộng, cục diện toàn cầu đảo lộn.',
+        hinhAnh: '/images/m1-ww2.png',
+        chuThich: 'Chiến tranh thế giới II bùng nổ, mở màn cho cuộc đối đầu toàn cầu.',
+        anh: {
+          src: '/images/m1-ww2.png',
+          chuThich: 'Chiến tranh thế giới II bùng nổ, mở màn cho cuộc đối đầu toàn cầu.',
+        },
       },
       {
         so: '02',
-        thoiDiem: 'Mùa xuân 1941',
-        tieuDe: 'Nguyễn Ái Quốc về nước',
-        moTa: 'Sau 30 năm bôn ba tìm đường cứu nước, Người trở về Pác Bó (Cao Bằng), trực tiếp lãnh đạo cách mạng và xây dựng căn cứ địa.',
-      },
-    ],
-  },
-
-  // 3. HỘI NGHỊ TRUNG ƯƠNG 8 (ẢNH 2 & ẢNH 3)
-  hoiNghiTW8: {
-    tieuDe: 'HỘI NGHỊ TRUNG ƯƠNG 8',
-    thongTinCoBan: [
-      { nhan: 'Thời gian', giaTri: '10 – 19/5/1941' },
-      { nhan: 'Địa điểm', giaTri: 'Lán Khuổi Nặm, Pác Bó (Cao Bằng)' },
-      { nhan: 'Chủ trì', giaTri: 'Đồng chí Nguyễn Ái Quốc' },
-    ],
-    quoteBox:
-      'Hội nghị Trung ương 8 tiếp tục và hoàn chỉnh quá trình chuyển hướng chiến lược đã bắt đầu từ Hội nghị Trung ương 6 năm 1939.',
-    anhTuLieu: [
-      {
-        src: '/images/m2-lan-khuoi-nam.png',
-        tieuDe: 'Di tích Lán Khuổi Nặm (Pác Bó)',
-        ghiChu: 'Nơi diễn ra Hội nghị Trung ương 8 lịch sử (10–19/5/1941)',
-      },
-      {
-        src: '/images/m2-tranh-tw8.png',
-        tieuDe: 'Hội nghị Trung ương 8',
-        ghiChu: 'Nguyễn Ái Quốc chủ trì hoàn chỉnh trọn vẹn đường lối cứu nước',
-      },
-    ],
-  },
-
-  // 4. BA QUYẾT SÁCH CHIẾN LƯỢC (ẢNH 4 & ẢNH 5)
-  noiDungChinh: {
-    tieuDe: '3 QUYẾT SÁCH CHIẾN LƯỢC',
-    phuDe: 'Ba quyết sách lịch sử đặt nền tảng đưa toàn dân tiến tới Tổng khởi nghĩa.',
-    cacQuyetDinh: [
-      {
-        so: '01',
-        tieuDe: 'Đặt giải phóng dân tộc lên hàng đầu',
-        vaiTro: 'Nhiệm vụ tối thượng',
-        quote: '“Độc lập dân tộc là nhiệm vụ trước hết và cấp bách nhất.”',
-        cacY: [
-          'Hội nghị xác định nhiệm vụ cấp bách nhất là giành độc lập dân tộc.',
-          'Quyền lợi của giai cấp và bộ phận phải đặt dưới quyền lợi chung của dân tộc.',
-          'Tạm gác khẩu hiệu ruộng đất, tập trung mũi nhọn chống Pháp – Nhật.',
-        ],
-      },
-      {
-        so: '02',
-        tieuDe: 'Thành lập Mặt trận Việt Minh',
-        vaiTro: 'Ngày 19/5/1941',
-        quote: '“Tập hợp rộng rãi các lực lượng yêu nước cùng đấu tranh giành độc lập.”',
-        hinhAnh: '/images/m2-mat-tran-viet-minh.png',
-        chuThichAnh: 'Mặt trận Việt Minh – Biểu tượng khối đại đoàn kết toàn dân (19/5/1941)',
-        cacY: [
-          'Mở rộng khối đại đoàn kết toàn dân thông qua các Hội Cứu quốc.',
-          'Tập hợp lực lượng chính trị quần chúng rộng rãi và áp đảo.',
-          'Tạo cơ sở tổ chức vững chắc cho cuộc đấu tranh giành chính quyền.',
-        ],
+        thoiDiem: 'Tháng 9/1939',
+        tieuDe: 'Pháp siết chặt đàn áp Đông Dương',
+        moTa: 'Toàn quyền Đông Dương ban bố tình trạng thời chiến, đặt Đảng Cộng sản ngoài vòng pháp luật, tổng động viên kinh tế phục vụ mẫu quốc.',
+        hinhAnh: '/images/m1-phap-dan-ap.png',
+        chuThich: 'Thực dân Pháp khủng bố trắng, thiết quân luật trên toàn cõi Đông Dương.',
+        anh: {
+          src: '/images/m1-phap-dan-ap.png',
+          chuThich: 'Thực dân Pháp khủng bố trắng, thiết quân luật trên toàn cõi Đông Dương.',
+        },
       },
       {
         so: '03',
-        tieuDe: 'Chuẩn bị khởi nghĩa vũ trang',
-        vaiTro: 'Nhiệm vụ trung tâm',
-        quote: '“Chuẩn bị toàn diện thực lực để tiến tới khởi nghĩa giành chính quyền.”',
-        hinhAnh: '/images/m2-luc-luong-khoi-nghia.png',
-        chuThichAnh: 'Lực lượng vũ trang cách mạng sẵn sàng đón thời cơ',
-        cacY: [
-          'Xây dựng lực lượng chính trị làm nòng cốt đại đoàn kết.',
-          'Phát triển lực lượng vũ trang: tự vệ, du kích cứu quốc.',
-          'Xây dựng căn cứ địa cách mạng, sẵn sàng chớp thời cơ giải phóng.',
-        ],
+        thoiDiem: 'Cuối 1939',
+        tieuDe: 'Mâu thuẫn dân tộc lên cao nhất',
+        moTa: 'Nhân dân ta lâm vào cảnh lầm than cùng cực. Mâu thuẫn giữa dân tộc Việt Nam với thực dân Pháp trở thành mâu thuẫn chủ yếu, gay gắt nhất.',
+        hinhAnh: '/images/m1-mau-thuan-dan-toc.png',
+        chuThich: 'Quần chúng nhân dân sục sôi tinh thần đấu tranh, mâu thuẫn giữa dân tộc ta và thực dân Pháp lên đến tột đỉnh.',
+        anh: {
+          src: '/images/m1-mau-thuan-dan-toc.png',
+          chuThich: 'Quần chúng nhân dân sục sôi tinh thần đấu tranh, mâu thuẫn giữa dân tộc ta và thực dân Pháp lên đến tột đỉnh.',
+        },
       },
     ],
   },
 
-  // 5. FLOW LOGIC CHIẾN LƯỢC (6 BƯỚC CÔ ĐỌNG)
-  logicChienLuoc: {
-    tieuDe: 'LOGIC CHIẾN LƯỢC 1939 – 1945',
-    phuDe: 'Dòng tư duy chuyển hướng nhất quán từ lý luận đến sức mạnh hiện thực',
+  // 3. HỘI NGHỊ TRUNG ƯƠNG 6 (Bố cục 2 cột)
+  hoiNghiTW6: {
+    tieuDe: 'HỘI NGHỊ TRUNG ƯƠNG 6',
+    thongTinCoBan: [
+      { nhan: 'Thời gian', giaTri: '06 – 08/11/1939' },
+      { nhan: 'Địa điểm', giaTri: 'Bà Điểm, Hóc Môn, Gia Định' },
+      { nhan: 'Chủ trì', giaTri: 'Tổng Bí thư Nguyễn Văn Cừ' },
+      { nhan: 'Tham dự', giaTri: 'Phan Đăng Lưu, Lê Duẩn, Võ Văn Tần...' },
+    ],
+    anhTuLieu: [
+      {
+        src: '/images/m1-nguyen-van-cu.png',
+        tieuDe: 'Tổng Bí thư Nguyễn Văn Cừ (1912–1941)',
+        ghiChu: 'Người chủ trì Hội nghị TW6, nhà lý luận xuất sắc khởi xướng tự phê bình và chuyển hướng chiến lược',
+      },
+      {
+        src: '/images/m1-badiem-hocmon.png',
+        tieuDe: 'Địa điểm Bà Điểm (Hóc Môn, Gia Định)',
+        ghiChu: 'Căn cứ bí mật kiên trung nuôi giấu Trung ương Đảng giữa vòng vây quân thù',
+      },
+    ],
+    quoteBox:
+      'Bước ngoặt lịch sử: Quyết định chuyển từ đấu tranh đòi dân sinh, dân chủ sang trực tiếp chuẩn bị khởi nghĩa vũ trang giành chính quyền.',
+    videoShorts: {
+      youtubeId: '_eF7_97ReXU',
+      tieuDeModal: 'TỔNG BÍ THƯ NGUYỄN VĂN CỪ (1912–1941)',
+      url: 'https://www.youtube.com/shorts/_eF7_97ReXU',
+      nguonTienTo: 'Nguồn: YouTube – ',
+      nguonTenLink: 'Nguyễn Văn Cừ',
+      nutMoRong: '⤢ Mở rộng',
+    },
+  },
+
+  // 4. FLOW "LOGIC CHUYỂN HƯỚNG" (6 bước)
+  logicChuyenHuong: {
+    tieuDe: 'LOGIC CHUYỂN HƯỚNG CHIẾN LƯỢC',
+    phuDe: 'Dòng tư duy chiến lược từ bối cảnh đến hành động cách mạng',
     cacBuoc: [
       {
         buoc: 1,
-        tenBuoc: '11/1939: Mở đầu chuyển hướng',
-        nguyenNhan: 'Hội nghị Trung ương 6 (Bà Điểm, Gia Định).',
-        ketQua: 'Đặt giải phóng dân tộc lên hàng đầu, chuyển sang hoạt động bí mật.',
-        tag: 'Mở đầu',
+        tenBuoc: 'Thế chiến II bùng nổ',
+        nguyenNhan: 'Mâu thuẫn giữa các khối đế quốc đạt đỉnh điểm.',
+        ketQua: 'Cục diện thế giới biến động sâu sắc.',
+        tag: 'Bối cảnh',
       },
       {
         buoc: 2,
-        tenBuoc: '05/1941: Hoàn chỉnh đường lối',
-        nguyenNhan: 'Hội nghị Trung ương 8 (Pác Bó, Cao Bằng).',
-        ketQua: 'Nguyễn Ái Quốc chủ trì, hoàn chỉnh trọn vẹn đường lối cứu nước.',
-        tag: 'Hoàn chỉnh',
+        tenBuoc: 'Pháp đàn áp dã man',
+        nguyenNhan: 'Thực dân siết chặt ách thống trị thời chiến.',
+        ketQua: 'Không gian đấu tranh công khai bị bóp nghẹt.',
+        tag: 'Áp bức',
       },
       {
         buoc: 3,
-        tenBuoc: 'Thành lập Việt Minh',
-        nguyenNhan: 'Ngày 19/5/1941 ra đời ngọn cờ tập hợp.',
-        ketQua: 'Mở rộng khối đại đoàn kết toàn dân qua các Hội Cứu quốc.',
-        tag: 'Đoàn kết',
+        tenBuoc: 'Mâu thuẫn dân tộc gay gắt',
+        nguyenNhan: 'Toàn thể dân tộc đứng trước họa diệt vong.',
+        ketQua: 'Yêu cầu độc lập trở thành đòi hỏi sinh tử.',
+        tag: 'Bản chất',
       },
       {
         buoc: 4,
-        tenBuoc: 'Xây dựng lực lượng',
-        nguyenNhan: 'Hiện thực hóa đường lối vào đời sống.',
-        ketQua: 'Phát triển lực lượng chính trị, vũ trang và căn cứ Việt Bắc.',
-        tag: 'Thực lực',
+        tenBuoc: 'Hội nghị Trung ương 6',
+        nguyenNhan: 'Đảng kịp thời phân tích tình hình mới.',
+        ketQua: 'Hạ quyết tâm chuyển hướng chiến lược toàn diện.',
+        tag: 'Quyết sách',
       },
       {
         buoc: 5,
-        tenBuoc: 'Chuẩn bị khởi nghĩa',
-        nguyenNhan: 'Đi từ khởi nghĩa từng phần.',
-        ketQua: 'Tích cực chuẩn bị thực lực, đón chờ thời cơ chín muồi.',
-        tag: 'Chuẩn bị',
+        tenBuoc: 'Ưu tiên Giải phóng Dân tộc',
+        nguyenNhan: 'Lợi ích dân tộc cao hơn lợi ích giai cấp.',
+        ketQua: 'Tạm gác khẩu hiệu ruộng đất, lập Mặt trận phản đế.',
+        tag: 'Hành động',
       },
       {
         buoc: 6,
-        tenBuoc: 'Tiến tới Tổng khởi nghĩa 1945',
-        nguyenNhan: 'Thời cơ tháng 8/1945 xuất hiện.',
-        ketQua: 'Chớp thời cơ giành chính quyền cả nước, lập nên nước Việt Nam Dân chủ Cộng hòa.',
-        tag: 'Thắng lợi',
+        tenBuoc: 'Chuẩn bị Khởi nghĩa Vũ trang',
+        nguyenNhan: 'Con đường bạo lực cách mạng là tất yếu.',
+        ketQua: 'Tạo tiền đề trực tiếp cho thắng lợi Tháng Tám 1945.',
+        tag: 'Mục tiêu',
       },
     ],
   },
 
-  // 6. Ý NGHĨA (NGẮN GỌN & CÂU KẾT LỚN)
+  // 5. ĐẢNG ĐIỀU CHỈNH NHƯ THẾ NÀO?
+  dieuChinhChienLuoc: {
+    tieuDe: 'ĐẢNG ĐIỀU CHỈNH NHƯ THẾ NÀO?',
+    phuDe: 'Hai quyết sách bản lề thay đổi toàn diện phương hướng và phương pháp cách mạng',
+    khoiNhiemVu: {
+      tieuDe: 'ĐIỀU CHỈNH VỀ NHIỆM VỤ CHIẾN LƯỢC',
+      vaiTro: 'Xác định mục tiêu tối thượng trong thời chiến',
+      noiDungChinh: 'Đặt giải phóng dân tộc lên hàng đầu, trên hết và trước hết.',
+      cacDiem: [
+        {
+          tieuDeNho: 'Tập trung chống đế quốc',
+          moTa: 'Giành độc lập dân tộc là yêu cầu sống còn và cấp bách nhất.',
+        },
+        {
+          tieuDeNho: 'Tạm gác khẩu hiệu ruộng đất',
+          moTa: 'Tập trung đại đoàn kết toàn dân; chỉ tịch thu ruộng đất của đế quốc và phản động.',
+        },
+        {
+          tieuDeNho: 'Lập Mặt trận phản đế',
+          moTa: 'Thành lập Mặt trận Dân tộc Thống nhất Phản đế Đông Dương để quy tụ mọi tầng lớp.',
+        },
+      ],
+    },
+    khoiHinhThuc: {
+      tieuDe: 'ĐIỀU CHỈNH VỀ HÌNH THỨC & PHƯƠNG PHÁP',
+      vaiTro: 'Bảo toàn lực lượng và chuẩn bị điều kiện vũ trang',
+      noiDungChinh: 'Chuyển trọng tâm sang hoạt động bí mật và bất hợp pháp.',
+      cacDiem: [
+        {
+          tieuDeNho: 'Rút vào hoạt động bí mật',
+          moTa: 'Bảo toàn cơ quan đầu não và mạch máu tổ chức Đảng giữa vòng vây khủng bố.',
+        },
+        {
+          tieuDeNho: 'Củng cố căn cứ quần chúng',
+          moTa: 'Chuyển trọng tâm về nông thôn và ngoại vi (Bà Điểm, Hóc Môn) làm bàn đạp.',
+        },
+        {
+          tieuDeNho: 'Chuẩn bị khởi nghĩa vũ trang',
+          moTa: 'Tích lũy thực lực bí mật để tiến tới bạo lực cách mạng khi thời cơ xuất hiện.',
+        },
+      ],
+    },
+  },
+
+  // 6. Ý NGHĨA VÀ TIẾN TRÌNH
   yNghiaTienTrinh: {
-    tieuDe: 'Ý NGHĨA LỊCH SỬ',
+    tieuDe: 'Ý NGHĨA LỊCH SỬ & TIẾN TRÌNH',
     thongDiepLon:
-      'Hội nghị Trung ương 8 tháng 5/1941 đã hoàn chỉnh quá trình chuyển hướng chiến lược của Đảng.',
-    baKetQua: [
+      'Quyết định tháng 11/1939 mở đầu quá trình chuẩn bị đường lối cho thắng lợi năm 1945.',
+    cauHoiCotLoi: [
       {
-        so: '01',
-        tieuDe: 'Hoàn chỉnh đường lối giải phóng dân tộc',
-        moTa: 'Xác định độc lập dân tộc là nhiệm vụ trước hết và cấp bách nhất của cách mạng.',
+        cauHoi: 'Vì sao chuyển hướng?',
+        cauTraLoi:
+          'Thế chiến bùng nổ, Pháp đàn áp gắt gao; mâu thuẫn dân tộc lên cao nhất; đấu tranh công khai không còn phù hợp.',
       },
       {
-        so: '02',
-        tieuDe: 'Thành lập Mặt trận Việt Minh',
-        moTa: 'Tập hợp rộng rãi mọi lực lượng yêu nước trong khối đại đoàn kết toàn dân.',
+        cauHoi: 'Điều chỉnh thế nào?',
+        cauTraLoi:
+          'Đặt độc lập dân tộc lên hàng đầu; tạm gác khẩu hiệu ruộng đất; chuyển sang hoạt động bí mật và bất hợp pháp.',
       },
       {
-        so: '03',
-        tieuDe: 'Đẩy mạnh chuẩn bị toàn diện khởi nghĩa',
-        moTa: 'Xây dựng lực lượng chính trị, vũ trang và căn cứ địa sẵn sàng đón thời cơ.',
+        cauHoi: 'Ý nghĩa với năm 1945?',
+        cauTraLoi:
+          'Bước mở đầu then chốt, tạo tiền đề để Hội nghị TW8 (5/1941) hoàn chỉnh trọn vẹn đường lối khởi nghĩa thắng lợi.',
       },
     ],
-    cauKetLon:
-      '“1939 mở đầu chuyển hướng – 1941 hoàn chỉnh đường lối và biến đường lối thành lực lượng cách mạng.”',
+    timeline: [
+      { nam: '1930', giaiDoan: 'Nền tảng', suKien: 'Đảng Cộng sản Việt Nam ra đời, mở ra con đường cứu nước.' },
+      { nam: '1939', giaiDoan: 'Khởi đầu', suKien: 'Mở đầu chuyển hướng chiến lược, đặt dân tộc lên hàng đầu.' },
+      { nam: '1941', giaiDoan: 'Hoàn chỉnh', suKien: 'Hội nghị TW8 hoàn chỉnh đường lối, thành lập Việt Minh.' },
+      { nam: '1945', giaiDoan: 'Thắng lợi', suKien: 'Tổng khởi nghĩa Tháng Tám thắng lợi trọn vẹn.' },
+    ],
+    quoteLon: 'Thời cơ không tự đến, thời cơ được chuẩn bị bằng những quyết định đúng.',
     cta: {
-      nhan: 'Tiếp theo → 1941–1944: Xây dựng lực lượng',
+      nhan: 'Tiếp theo → 05/1941: Hoàn chỉnh chuyển hướng, Việt Minh',
       duongDan: '/cot-moc/3',
-      ghiChu: 'Cột mốc 03: Giai đoạn xây dựng căn cứ địa và lực lượng vũ trang cách mạng',
+      ghiChu: 'Cột mốc 03: Hoàn chỉnh chuyển hướng chiến lược tại Pác Bó',
     },
   },
 
   // 7. NGUỒN TƯ LIỆU THAM KHẢO
   nguonTuLieu: [
-    { ten: 'Văn kiện Đảng Toàn tập, Tập 7 (1940–1945)', nhaXuatBan: 'NXB Chính trị quốc gia' },
-    { ten: 'Hồ Chí Minh Toàn tập, Tập 3 (1930–1945)', nhaXuatBan: 'NXB CTQG Sự thật' },
-    { ten: 'Lịch sử Đảng Cộng sản Việt Nam, Tập 1', nhaXuatBan: 'NXB CTQG Sự thật' },
-    { ten: 'Hồ sơ Di tích Quốc gia đặc biệt Pác Bó', nhaXuatBan: 'Cao Bằng' },
+    { ten: 'Văn kiện Đảng Toàn tập, Tập 6 (1936–1939)', nhaXuatBan: 'NXB Chính trị quốc gia' },
+    { ten: 'Lịch sử Đảng Cộng sản Việt Nam, Tập 1 (1930–1954)', nhaXuatBan: 'NXB CTQG Sự thật' },
+    { ten: 'Đồng chí Nguyễn Văn Cừ – Nhà lãnh đạo xuất sắc của Đảng', nhaXuatBan: 'Viện Lịch sử Đảng' },
+    { ten: 'Hồ sơ Di tích Địa điểm Họp Hội nghị TW Đảng (11/1939)', nhaXuatBan: 'Hóc Môn, TP.HCM' },
   ],
 };
